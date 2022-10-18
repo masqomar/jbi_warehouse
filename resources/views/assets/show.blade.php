@@ -87,10 +87,9 @@
                                     <tr>
                                         <th class="text-center">No.</th>
                                         <th class="text-center">Code</th>
-                                        <th class="text-center">Asset</th>
-                                        <th class="text-center">Purchasing Code</th>
-                                        <th class="text-center">Purchasing Date</th>
                                         <th class="text-center">Status</th>
+                                        <th class="text-center">Current Location</th>
+                                        <th class="text-center">PIC</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -98,10 +97,9 @@
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
                                         <td class="text-center">{{ $item->full_code }}</td>
-                                        <td class="text-center">{{ $item->asset->name }}</td>
-                                        <td class="text-center">{{ $item->purchasing_no }}</td>
-                                        <td class="text-center">{{ $item->purchasing_date }}</td>
                                         <td class="text-center">{{ $item->status }}</td>
+                                        <td class="text-center">{{ $item->placement_item ? $item->placement_item->placement->room->name : '-' }}</td>
+                                        <td class="text-center">{{ $item->placement_item ? $item->placement_item->placement->staff->name : '-' }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -33,7 +33,7 @@ class Placement extends Model
 		return $this->belongsTo(\App\Models\User::class, 'created_by', 'id');
 	}
 
-	public function staff_id()
+	public function staff()
 	{
 		return $this->belongsTo(\App\Models\User::class, 'staff_id', 'id');
 	}
@@ -41,5 +41,10 @@ class Placement extends Model
 	public function company()
 	{
 		return $this->belongsTo(\App\Models\Company::class);
+	}
+
+	public function placement_item()
+	{
+		return $this->hasMany(PlacementItem::class);
 	}
 }

@@ -178,12 +178,7 @@ return [
                 'delete role & permission',
             ]
         ],
-        [
-            'group' => 'test',
-            'lists' => [
-                'view test',
-            ]
-        ],
+        ['group' => 'all-products', 'lists' => ['view all-product', 'create all-product', 'edit all-product', 'delete all-product']],
         ['group' => 'companies', 'lists' => ['view company', 'create company', 'edit company', 'delete company']],
         ['group' => 'categories', 'lists' => ['view category', 'create category', 'edit category', 'delete category']],
         ['group' => 'units', 'lists' => ['view unit', 'create unit', 'edit unit', 'delete unit']],
@@ -197,15 +192,11 @@ return [
         ['group' => 'programs', 'lists' => ['view program', 'create program', 'edit program', 'delete program']],
         ['group' => 'members', 'lists' => ['view member', 'create member', 'edit member', 'delete member']],
         ['group' => 'assets', 'lists' => ['view asset', 'create asset', 'edit asset', 'delete asset']],
-        ['group' => 'assetitems', 'lists' => ['view assetitem', 'create assetitem', 'edit assetitem', 'delete assetitem']],
         ['group' => 'placements', 'lists' => ['view placement', 'create placement', 'edit placement', 'delete placement']],
         ['group' => 'permissions', 'lists' => ['view permission', 'create permission', 'edit permission', 'delete permission']],
         ['group' => 'transactions', 'lists' => ['view transaction', 'create transaction', 'edit transaction', 'delete transaction']],
-        ['group' => 'placementitems', 'lists' => ['view placementitem', 'create placementitem', 'edit placementitem', 'delete placementitem']], 
-		['group' => 'mutations', 'lists' => ['view mutation', 'create mutation', 'edit mutation', 'delete mutation']], 
-		['group' => 'mutationfroms', 'lists' => ['view mutationfrom', 'create mutationfrom', 'edit mutationfrom', 'delete mutationfrom']], 
-		['group' => 'mutationtos', 'lists' => ['view mutationto', 'create mutationto', 'edit mutationto', 'delete mutationto']], 
-		['group' => 'assetmaintenances', 'lists' => ['view assetmaintenance', 'create assetmaintenance', 'edit assetmaintenance', 'delete assetmaintenance']], 
-		// Don't remove this comment, it will used as 'search param' to generate a new permission
+        ['group' => 'mutations', 'lists' => ['view mutation', 'create mutation', 'edit mutation', 'delete mutation']],
+        ['group' => 'assetmaintenances', 'lists' => ['view assetmaintenance', 'create assetmaintenance', 'edit assetmaintenance', 'delete assetmaintenance']],
+        // Don't remove this comment, it will used as 'search param' to generate a new permission
     ],
 ];

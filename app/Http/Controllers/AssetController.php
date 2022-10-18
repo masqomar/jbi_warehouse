@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Models\Asset;
 use App\Http\Requests\{StoreAssetRequest, UpdateAssetRequest};
 use App\Models\AssetItem;
+use App\Models\Placement;
+use App\Models\PlacementItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -109,7 +111,9 @@ class AssetController extends Controller
     public function show(Asset $asset)
     {
         $asset->load('unit:id,name', 'category:id,code', 'company:id,code');
-        $assetItems = AssetItem::where('asset_id', $asset->id)->get();
+        $assetItems = AssetItem::with('placement_item')->where('asset_id', $asset->id)->get();
+
+        return json_decode($assetItems);
 
         return view('assets.show', compact('asset', 'assetItems'));
     }

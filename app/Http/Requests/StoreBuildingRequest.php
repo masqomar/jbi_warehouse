@@ -25,11 +25,10 @@ class StoreBuildingRequest extends FormRequest
     {
         return [
             'name' => 'required',
-			'phone' => 'nullable',
-			'address' => 'nullable',
-			'owner' => 'nullable',
-			'status' => 'required',
-			'company_id' => 'required|exists:App\Models\Company,id',
+            'phone' => 'nullable',
+            'address' => 'nullable',
+            'owner' => 'nullable',
+            'status' => 'required',
         ];
     }
 }

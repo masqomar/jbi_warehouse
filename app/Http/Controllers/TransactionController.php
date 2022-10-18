@@ -51,15 +51,11 @@ class TransactionController extends Controller
             if ($transaction && $carts) {
                 foreach ($carts as $cart) {
 
-                    $itemBaseTotal = $cart->quantity * $cart->price;
-
                     $orderItemParams = [
                         'transaction_id' => $transaction->id,
                         'product_id' => $cart->product_id,
                         'qty' => $cart->quantity,
                         'product_name' => $cart->name,
-                        'base_price' => $cart->price,
-                        'base_total' => $itemBaseTotal,
                     ];
 
                     $orderItem = TransactionDetail::create($orderItemParams);

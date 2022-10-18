@@ -56,7 +56,7 @@ class DevisionController extends Controller
      */
     public function store(StoreDevisionRequest $request)
     {
-        Devision::create($request->validated());
+        Devision::create($request->validated() + (['company_id' => auth()->user()->company_id]));
 
         return redirect()
             ->route('devisions.index')

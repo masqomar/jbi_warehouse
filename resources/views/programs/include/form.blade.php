@@ -10,20 +10,6 @@
             @enderror
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="company_id">{{ __('Company') }}</label>
-            <select class="form-select" name="company_id" id="company_id" class="form-control" required>
-                <option value="" selected disabled>-- {{ __('Select company') }} --</option>
-
-                @foreach ($companies as $company)
-                <option value="{{ $company->id }}" {{ isset($program) && $program->company_id == $company->id ? 'selected' : (old('company_id') == $company->id ? 'selected' : '') }}>
-                    {{ $company->code }}
-                </option>
-                @endforeach
-            </select>
-        </div>
-    </div>
 
     <div class="col-md-6">
         <div class="form-group">

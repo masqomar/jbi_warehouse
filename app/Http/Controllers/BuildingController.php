@@ -60,7 +60,7 @@ class BuildingController extends Controller
      */
     public function store(StoreBuildingRequest $request)
     {
-        Building::create($request->validated());
+        Building::create($request->validated() + (['company_id' => auth()->user()->company_id]));
 
         return redirect()
             ->route('buildings.index')

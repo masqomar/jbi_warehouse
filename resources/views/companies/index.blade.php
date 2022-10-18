@@ -43,7 +43,7 @@
                                         <th>{{ __('Name') }}</th>
                                         <th>{{ __('Phone') }}</th>
                                         <th>{{ __('Address') }}</th>
-                                        <th>{{ __('Statu') }}</th>
+                                        <th>{{ __('Status') }}</th>
                                         <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
@@ -99,8 +99,8 @@
                 }
             },
             {
-                data: 'statu',
-                name: 'statu',
+                data: 'status',
+                name: 'status',
                 render: function(data, type, full, meta) {
                     return data ? data : '-';
                 }

@@ -36,7 +36,7 @@
                             <th>No</th>
                             <th>Date</th>
                             <th>Code</th>
-                            <th>Name</th>
+                            <th>PIC</th>
                             <th>Total Price</th>
                             <th>Action</th>
                         </tr>
@@ -51,7 +51,7 @@
                             <td>{{ $transaction->created_at }}</td>
                             <td>{{ $transaction->transaction_code }}</td>
                             <td>{{ $transaction->pic }}</td>
-                            <td>${{ $transaction->total_price }}</td>
+                            <td>@rupiah( $transaction->total_price )</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('transactions.show', $transaction->id) }}" class="btn btn-info">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\{StoreUserRequest, UpdateUserRequest};
 use App\Models\Company;
 use App\Models\Devision;
+use App\Models\Placement;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -126,8 +127,11 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user->load('roles:id,name');
+        $placementAssets = Placement::with('placement_item')->where('staff_id', $user->id)->get();
+        // $placementAssets = Placement::with('placement_item.asset_item.asset')->where('staff_id', $user->id)->get();
 
-        return view('users.show', compact('user'));
+        // return json_decode($placementAssets);
+        return view('users.show', compact('user', 'placementAssets'));
     }
 
     /**

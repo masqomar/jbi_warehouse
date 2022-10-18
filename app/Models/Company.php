@@ -14,14 +14,12 @@ class Company extends Model
      *
      * @var string[]
      */
-    protected $fillable = ['code', 'name', 'phone', 'address', 'statu'];
+    protected $fillable = ['code', 'name', 'phone', 'address', 'status'];
 
     /**
      * The attributes that should be cast.
      *
      * @var array
      */
-    protected $casts = ['code' => 'string', 'name' => 'string', 'phone' => 'string', 'address' => 'string', 'statu' => 'boolean', 'created_at' => 'datetime:d/m/Y H:i', 'updated_at' => 'datetime:d/m/Y H:i'];
-
-
+    protected $casts = ['code' => 'string', 'name' => 'string', 'phone' => 'string', 'address' => 'string', 'status' => 'boolean', 'created_at' => 'datetime:d/m/Y H:i', 'updated_at' => 'datetime:d/m/Y H:i'];
 }

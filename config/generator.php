@@ -136,9 +136,8 @@ return [
      */
     'sidebars' => [
         [
-            'header' => 'Main',
+            'header' => 'Menu Cabang',
             'permissions' => [
-                'view test',
                 'view company',
                 'view category',
                 'view unit',
@@ -159,7 +158,7 @@ return [
             ],
             'menus' => [
                 [
-                    'title' => 'Main Data',
+                    'title' => 'Master Data',
                     'icon' => '<i class="bi bi-collection-fill"></i>',
                     'route' => null,
                     'permission' => null,
@@ -172,34 +171,29 @@ return [
                     ],
                     'submenus' => [
                         [
-                            'title' => 'Tests',
-                            'route' => '/tests',
-                            'permission' => 'view test'
-                        ],
-                        [
-                            'title' => 'Companies',
+                            'title' => 'Entitas',
                             'route' => '/companies',
                             'permission' => 'view company'
                         ],
                         [
-                            'title' => 'Buildings',
+                            'title' => 'Gedung / Camp',
                             'route' => '/buildings',
                             'permission' => 'view building'
                         ],
                         [
-                            'title' => 'Rooms',
+                            'title' => 'Ruang / Kamar',
                             'route' => '/rooms',
                             'permission' => 'view room'
                         ],
                         [
-                            'title' => 'Devisions',
+                            'title' => 'Devisi',
                             'route' => '/devisions',
                             'permission' => 'view devision'
                         ]
                     ]
                 ],
                 [
-                    'title' => 'Categories',
+                    'title' => 'Master Barang',
                     'icon' => '<i class="bi bi-people"></i>',
                     'route' => null,
                     'permission' => null,
@@ -210,17 +204,17 @@ return [
                     ],
                     'submenus' => [
                         [
-                            'title' => 'Categories',
+                            'title' => 'Kategori',
                             'route' => '/categories',
                             'permission' => 'view category'
                         ],
                         [
-                            'title' => 'Units',
+                            'title' => 'Satuan',
                             'route' => '/units',
                             'permission' => 'view unit'
                         ],
                         [
-                            'title' => 'Suppliers',
+                            'title' => 'Supplier',
                             'route' => '/suppliers',
                             'permission' => 'view supplier'
                         ]
@@ -238,7 +232,7 @@ return [
                     ],
                     'submenus' => [
                         [
-                            'title' => 'Persediaan',
+                            'title' => 'Barang Persediaan',
                             'route' => '/products',
                             'permission' => 'view product'
                         ],
@@ -255,58 +249,34 @@ return [
                     ]
                 ],
                 [
-                    'title' => 'Assets',
+                    'title' => 'Inventaris',
                     'icon' => '<i class="bi bi-people"></i>',
                     'route' => null,
                     'permission' => null,
                     'permissions' => [
                         'view asset',
-                        'view assetitem',
                         'view placement',
-                        'view placementitem',
                         'view mutation',
-                        'view mutationfrom',
-                        'view mutationto',
                         'view assetmaintenance'
                     ],
                     'submenus' => [
                         [
-                            'title' => 'Assets',
+                            'title' => 'Barang Inventaris',
                             'route' => '/assets',
                             'permission' => 'view asset'
                         ],
                         [
-                            'title' => 'AssetItems',
-                            'route' => '/asset-items',
-                            'permission' => 'view assetitem'
-                        ],
-                        [
-                            'title' => 'Placements',
+                            'title' => 'Penempatan',
                             'route' => '/placements',
                             'permission' => 'view placement'
                         ],
                         [
-                            'title' => 'PlacementItems',
-                            'route' => '/placement-items',
-                            'permission' => 'view placementitem'
-                        ],
-                        [
-                            'title' => 'Mutations',
+                            'title' => 'Mutasi',
                             'route' => '/mutations',
                             'permission' => 'view mutation'
                         ],
                         [
-                            'title' => 'MutationFroms',
-                            'route' => '/mutation-from',
-                            'permission' => 'view mutationfrom'
-                        ],
-                        [
-                            'title' => 'MutationTos',
-                            'route' => '/mutationtos',
-                            'permission' => 'view mutationto'
-                        ],
-                        [
-                            'title' => 'Asset Maintenances',
+                            'title' => 'Perbaikan',
                             'route' => '/asset-maintenances',
                             'permission' => 'view assetmaintenance'
                         ]
@@ -330,10 +300,44 @@ return [
                     'submenus' => []
                 ],
                 [
-                    'title' => 'Members',
+                    'title' => 'Check In',
                     'icon' => '<i class="bi bi-people"></i>',
                     'route' => '/members',
                     'permission' => 'view member',
+                    'permissions' => [],
+                    'submenus' => []
+                ]
+            ]
+        ],
+        [
+            'header' => 'Menu Pusat',
+            'permissions' => [
+                'view all-product',
+                'view role & permission',
+                'view permission'
+            ],
+            'menus' => [
+                [
+                    'title' => 'Laporan Persediaan',
+                    'icon' => '<i class="bi bi-people-fill"></i>',
+                    'route' => '/all-products',
+                    'permission' => 'view all-product',
+                    'permissions' => [],
+                    'submenus' => []
+                ],
+                [
+                    'title' => 'Roles & permissions',
+                    'icon' => '<i class="bi bi-person-check-fill"></i>',
+                    'route' => '/roles',
+                    'permission' => 'view role & permission',
+                    'permissions' => [],
+                    'submenus' => []
+                ],
+                [
+                    'title' => 'Permissions',
+                    'icon' => '<i class="bi bi-people"></i>',
+                    'route' => '/permissions',
+                    'permission' => 'view permission',
                     'permissions' => [],
                     'submenus' => []
                 ]

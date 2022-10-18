@@ -217,6 +217,56 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         View::composer([
+            'asset-items.create',
+            'asset-items.edit',
+        ], function ($view) {
+            return $view->with(
+                'assets',
+                \App\Models\Asset::select('id', 'name')->get()
+            );
+        });
+
+        View::composer([
+            'asset-items.create',
+            'asset-items.edit',
+        ], function ($view) {
+            return $view->with(
+                'categories',
+                \App\Models\Category::select('id', 'code')->get()
+            );
+        });
+
+        View::composer([
+            'asset-items.create',
+            'asset-items.edit',
+        ], function ($view) {
+            return $view->with(
+                'companies',
+                \App\Models\Company::select('id', 'code')->get()
+            );
+        });
+
+        View::composer([
+            'asset-items.create',
+            'asset-items.edit',
+        ], function ($view) {
+            return $view->with(
+                'users',
+                \App\Models\User::select('id', 'name')->get()
+            );
+        });
+
+        View::composer([
+            'asset-items.create',
+            'asset-items.edit',
+        ], function ($view) {
+            return $view->with(
+                'users',
+                \App\Models\User::select('id', 'name')->get()
+            );
+        });
+
+        View::composer([
             'placements.create',
             'placements.edit',
         ], function ($view) {
@@ -257,12 +307,82 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         View::composer([
+            'placement-items.create',
+            'placement-items.edit',
+        ], function ($view) {
+            return $view->with(
+                'placements',
+                \App\Models\Placement::select('id', 'placement_code')->get()
+            );
+        });
+
+        View::composer([
+            'placement-items.create',
+            'placement-items.edit',
+        ], function ($view) {
+            return $view->with(
+                'assetItems',
+                \App\Models\AssetItem::select('id', 'code')->get()
+            );
+        });
+
+        View::composer([
             'mutations.create',
             'mutations.edit',
         ], function ($view) {
             return $view->with(
                 'users',
                 \App\Models\User::select('id', 'name')->get()
+            );
+        });
+
+        View::composer([
+            'mutation-froms.create',
+            'mutation-froms.edit',
+        ], function ($view) {
+            return $view->with(
+                'mutations',
+                \App\Models\Mutation::select('id', 'mutation_code')->get()
+            );
+        });
+
+        View::composer([
+            'mutation-froms.create',
+            'mutation-froms.edit',
+        ], function ($view) {
+            return $view->with(
+                'placements',
+                \App\Models\Placement::select('id', 'placement_code')->get()
+            );
+        });
+
+        View::composer([
+            'mutation-froms.create',
+            'mutation-froms.edit',
+        ], function ($view) {
+            return $view->with(
+                'assetItems',
+                \App\Models\AssetItem::select('id', 'code')->get()
+            );
+        });
+
+        View::composer([
+            'mutation-tos.create',
+            'mutation-tos.edit',
+        ], function ($view) {
+            return $view->with(
+                'mutations',
+                \App\Models\Mutation::select('id', 'mutation_code')->get()
+            );
+        });
+
+        View::composer([
+            'mutation-tos.create',
+            'mutation-tos.edit',
+        ], function ($view) {
+            return $view->with(
+                'placements',
+                \App\Models\Placement::select('id', 'placement_code')->get()
             );
         });
 

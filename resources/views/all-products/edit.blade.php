@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', trans('Edit MutationFroms'))
+@section('title', trans('Edit Categories'))
 
 @section('content')
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-8 order-md-1 order-last">
-                    <h3>{{ __('MutationFroms') }}</h3>
+                    <h3>{{ __('Categories') }}</h3>
                     <p class="text-subtitle text-muted">
-                        {{ __('Edit a mutationfrom.') }}
+                        {{ __('Edit a category.') }}
                     </p>
                 </div>
 
@@ -18,7 +18,7 @@
                         <a href="/">{{ __('Dashboard') }}</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{ route('mutation-froms.index') }}">{{ __('MutationFroms') }}</a>
+                        <a href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         {{ __('Edit') }}
@@ -32,11 +32,11 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('mutation-froms.update', $mutationFrom->id) }}" method="POST">
+                            <form action="{{ route('categories.update', $category->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
 
-                                @include('mutation-froms.include.form')
+                                @include('categories.include.form')
 
                                 <a href="{{ url()->previous() }}" class="btn btn-secondary">{{ __('Back') }}</a>
 

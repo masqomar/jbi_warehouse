@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('Categories'))
+@section('title', trans('Detail Transaction'))
 
 @section('content')
 <div class="container-fluid">
@@ -22,8 +22,8 @@
                             <th>#</th>
                             <th>Item</th>
                             <th>Quantity</th>
-                            <th>Unit Cost</th>
-                            <th>Total</th>
+                            <th>Purpose</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,8 +32,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->product_name }}</td>
                             <td>{{ $item->qty }}</td>
-                            <td>${{ $item->base_price }}</td>
-                            <td>${{ $item->base_total }}</td>
+                            <td>{{ $transaction->purpose }}</td>
+                            <td>{{ $transaction->description }}</td>
                         </tr>
                         @empty
                         <tr>
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="card-footer text-right">
-            <h3>Total : ${{ $transaction->total_price }}</h3>
+            <h3>Total : @rupiah( $transaction->total_price )</h3>
             <button class="btn btn-success" onclick="notaKecil('{{ route('transactions.print_struck', $transaction->id) }}', 'print_struck')">Print</button>
         </div>
     </div>

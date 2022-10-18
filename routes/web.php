@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    ClientController,
-    MutationAssetController,
     MutationController,
     UserController,
     ProfileController,
@@ -27,8 +25,16 @@ Route::middleware(['auth', 'web'])->group(function () {
 
 require_once __DIR__ . '/generator.php';
 
+//Pusat
+Route::resource('all-products', App\Http\Controllers\AllProductController::class)->middleware('auth');
+
+
+
+//Cabang
 Route::resource('carts', \App\Http\Controllers\CartController::class)->middleware('auth');
 Route::post('carts/scan', [\App\Http\Controllers\CartController::class, 'scan'])->name('carts.scan')->middleware('auth');
+
+Route::resource('/', App\Http\Controllers\DashboardController::class)->middleware('auth');
 
 Route::resource('companies', App\Http\Controllers\CompanyController::class)->middleware('auth');
 
@@ -63,23 +69,14 @@ Route::resource('members', App\Http\Controllers\MemberController::class)->middle
 
 Route::resource('assets', App\Http\Controllers\AssetController::class)->middleware('auth');
 
-Route::resource('asset-items', App\Http\Controllers\AssetItemController::class)->middleware('auth');
-
 Route::resource('placements', App\Http\Controllers\PlacementController::class)->middleware('auth');
 
 Route::resource('permissions', App\Http\Controllers\PermissionController::class)->middleware('auth');
-
-Route::resource('placement-items', App\Http\Controllers\PlacementItemController::class)->middleware('auth');
 
 Route::get('mutations/cart', [MutationController::class, 'cart'])->name('mutations.cart');
 Route::get('mutations/add-to-cart/{id}', [MutationController::class, 'addToCart'])->name('mutations.add.to.cart');
 Route::delete('mutations/remove-from-cart', [MutationController::class, 'remove'])->name('mutations.remove.from.cart');
 
 Route::resource('mutations', App\Http\Controllers\MutationController::class)->middleware('auth');
-
-Route::resource('mutation-froms', App\Http\Controllers\MutationFromController::class)->middleware('auth');
-
-Route::resource('mutation-tos', App\Http\Controllers\MutationToController::class)->middleware('auth');
-
 
 Route::resource('asset-maintenances', App\Http\Controllers\AssetMaintenanceController::class)->middleware('auth');

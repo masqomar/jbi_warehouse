@@ -43,6 +43,11 @@ class AssetItem extends Model
 		return $this->belongsTo(\App\Models\User::class, 'created_by', 'id');
 	}
 
+	public function placement_item()
+	{
+		return $this->hasOne(PlacementItem::class, 'asset_item_id', 'full_code');
+	}
+
 	public static function boot()
 	{
 		parent::boot();

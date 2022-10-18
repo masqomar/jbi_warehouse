@@ -25,9 +25,8 @@ class StoreRoomRequest extends FormRequest
     {
         return [
             'name' => 'required',
-			'status' => 'required',
-			'building_id' => 'required|exists:App\Models\Building,id',
-			'company_id' => 'required|exists:App\Models\Company,id',
+            'status' => 'required',
+            'building_id' => 'required|exists:App\Models\Building,id',
         ];
     }
 }

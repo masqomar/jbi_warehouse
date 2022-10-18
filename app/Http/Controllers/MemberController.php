@@ -35,7 +35,8 @@ class MemberController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $members = Member::with('user:id,name', 'company:id,code');
+            $members = Member::with('user:id,name', 'company:id,code')
+                ->where('company_id', auth()->user()->company_id);
 
             return DataTables::of($members)
                 ->addColumn('address', function ($row) {
@@ -119,35 +120,35 @@ class MemberController extends Controller
                     ]);
             }
 
-            // $toolkits = FacilityItem::select(
-            //     "facility_items.member_id",
-            //     DB::raw("(GROUP_CONCAT(inventories.name SEPARATOR ',')) as `Toolkit`")
-            // )
-            //     ->leftjoin("inventories", "inventories.id", "=", "facility_items.inventory_id")
-            //     ->where('facility_items.member_id', $request->reg_number)
-            //     ->groupBy('facility_items.member_id')
-            //     ->get()
-            //     ->first()
-            //     ->Toolkit;
+            $toolkits = ToolkitItem::select(
+                "toolkit_items.member_id",
+                DB::raw("(GROUP_CONCAT(products.name SEPARATOR ',')) as `Toolkit`")
+            )
+                ->leftjoin("products", "products.id", "=", "toolkit_items.product_id")
+                ->where('toolkit_items.member_id', $request->reg_number)
+                ->groupBy('toolkit_items.member_id')
+                ->get()
+                ->first()
+                ->Toolkit;
 
-            // $text = "<b>Pengambilan Toolkit Baru</b>\n\n"
-            // . "<b>No Reg: </b>"
-            // . "$request->reg_number\n"
-            // . "<b>Nama: </b>"
-            // . "$request->name\n"
-            // . "<b>Jenis Kelamin: </b>"
-            // . "$request->gender\n"
-            // . "<b>Program: </b>"
-            // . "$request->program\n\n"
-            // . "<b>Modul: </b>\n"
-            // . "$toolkits\n"
-            // . "Kaos $request->tshirt";
+            $text = "<b>Pengambilan Toolkit Baru</b>\n\n"
+                . "<b>No Reg: </b>"
+                . "$request->reg_number\n"
+                . "<b>Nama: </b>"
+                . "$request->name\n"
+                . "<b>Jenis Kelamin: </b>"
+                . "$request->gender\n"
+                . "<b>Program: </b>"
+                . "$request->program\n\n"
+                . "<b>Modul: </b>\n"
+                . "$toolkits\n"
+                . "Kaos $request->tshirt";
 
-            // Telegram::sendMessage([
-            //     'chat_id' => env('TELEGRAM_CHANNEL_ID', ''),
-            //     'parse_mode' => 'HTML',
-            //     'text' => $text
-            // ]);
+            Telegram::sendMessage([
+                'chat_id' => env('TELEGRAM_CHANNEL_ID', ''),
+                'parse_mode' => 'HTML',
+                'text' => $text
+            ]);
         });
 
         return redirect()

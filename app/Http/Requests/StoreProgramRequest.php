@@ -25,7 +25,6 @@ class StoreProgramRequest extends FormRequest
     {
         return [
             'name' => 'required',
-			'company_id' => 'required|exists:App\Models\Company,id',
         ];
     }
 }

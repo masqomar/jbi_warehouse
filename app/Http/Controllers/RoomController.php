@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Http\Requests\{StoreRoomRequest, UpdateRoomRequest};
+use App\Models\Building;
 use Yajra\DataTables\Facades\DataTables;
 
 class RoomController extends Controller
@@ -25,14 +26,14 @@ class RoomController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $rooms = Room::with('building:id,name', 'company:id,code')
+            $rooms = Room::with('building:id,name', 'company:id,code,name')
                 ->where('company_id', auth()->user()->company_id);
 
             return DataTables::of($rooms)
                 ->addColumn('building', function ($row) {
                     return $row->building ? $row->building->name : '-';
                 })->addColumn('company', function ($row) {
-                    return $row->company ? $row->company->code : '-';
+                    return $row->company ? $row->company->name : '-';
                 })->addColumn('action', 'rooms.include.action')
                 ->toJson();
         }
@@ -48,7 +49,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('rooms.create');
+        $gedung = Building::where('company_id', auth()->user()->company_id)->get();
+
+        return view('rooms.create', compact('gedung'));
     }
 
     /**
@@ -59,7 +62,7 @@ class RoomController extends Controller
      */
     public function store(StoreRoomRequest $request)
     {
-        Room::create($request->validated());
+        Room::create($request->validated() + (['company_id' => auth()->user()->company_id]));
 
         return redirect()
             ->route('rooms.index')

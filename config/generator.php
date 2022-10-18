@@ -314,7 +314,6 @@ return [
             'permissions' => [
                 'view all-product',
                 'view role & permission',
-                'view permission'
             ],
             'menus' => [
                 [
@@ -326,18 +325,10 @@ return [
                     'submenus' => []
                 ],
                 [
-                    'title' => 'Roles & permissions',
+                    'title' => 'Laporan Inventaris',
                     'icon' => '<i class="bi bi-person-check-fill"></i>',
-                    'route' => '/roles',
+                    'route' => '/errors',
                     'permission' => 'view role & permission',
-                    'permissions' => [],
-                    'submenus' => []
-                ],
-                [
-                    'title' => 'Permissions',
-                    'icon' => '<i class="bi bi-people"></i>',
-                    'route' => '/permissions',
-                    'permission' => 'view permission',
                     'permissions' => [],
                     'submenus' => []
                 ]

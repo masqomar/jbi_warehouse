@@ -98,10 +98,11 @@
                                     @foreach($placementAssets as $key => $item)
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
-                                        <td class="text-center">{{ $item->placement_item ? $item->placement_item : '-'}}</td>
-                                        <td class="text-center">{{ $item->type }}</td>
-                                        <td class="text-center">{{ $item->condition }}</td>
-                                        <td class="text-center">{{ $item->description }}</td>
+                                        <td class="text-center">{{ $item->asset_item ? $item->asset_item->asset->name : '-' }}</td>
+                                        <td class="text-center">{{ $item ? $item->asset_item_id : '-' }}</td>
+                                        <td class="text-center">{{ $item->placement ? $item->placement->type : '-' }}</td>
+                                        <td class="text-center">{{ $item->placement ? $item->placement->condition : '-' }}</td>
+                                        <td class="text-center">{{ $item->placement ? $item->placement->description : '-' }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

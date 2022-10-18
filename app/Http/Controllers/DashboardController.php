@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $productCount = Product::count();
         $assetItemCount = AssetItem::count();
 
-        $poTimes = Product::where('company_id', auth()->user()->company_id)->get();
+        $poTimes = Product::with('company')->where('company_id', auth()->user()->company_id)->get();
 
         $latestTransactions = Transaction::latest()->where('company_id', auth()->user()->company_id)->paginate(5);
         $latestComingProducts = ComingProduct::latest()->where('company_id', auth()->user()->company_id)->paginate(5);

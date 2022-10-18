@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('placement_code');
             $table->date('date');
             $table->foreignId('room_id')->constrained('rooms')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('staff_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+            // $table->foreignId('staff_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('description')->nullable();
             $table->string('type');
             $table->enum('condition', ['Bagus', 'Rusak']);

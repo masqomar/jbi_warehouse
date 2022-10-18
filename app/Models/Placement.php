@@ -42,9 +42,4 @@ class Placement extends Model
 	{
 		return $this->belongsTo(\App\Models\Company::class);
 	}
-
-	public function placement_item()
-	{
-		return $this->hasMany(PlacementItem::class);
-	}
 }

@@ -90,7 +90,6 @@ class PlacementController extends Controller
                 'placement_code' => $request->placement_code,
                 'date' => $request->date,
                 'room_id' => $request->room_id,
-                'staff_id' => $request->staff_id,
                 'description' => $request->description,
                 'type' => 'Baru',
                 'condition' => 'Bagus',
@@ -104,6 +103,7 @@ class PlacementController extends Controller
                     'placement_id' => $placement,
                     'asset_item_id' => $id[$i],
                     'status' => 'Yes',
+                    'staff_id' => $request->staff_id,
                     'company_id' => Auth::user()->company_id
                 ]);
 

@@ -6,9 +6,11 @@ use App\Http\Requests\{StoreUserRequest, UpdateUserRequest};
 use App\Models\Company;
 use App\Models\Devision;
 use App\Models\Placement;
+use App\Models\PlacementItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use Image;
 
@@ -127,10 +129,10 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user->load('roles:id,name');
-        $placementAssets = Placement::with('placement_item')->where('staff_id', $user->id)->get();
-        // $placementAssets = Placement::with('placement_item.asset_item.asset')->where('staff_id', $user->id)->get();
+        $placementAssets = PlacementItem::with('asset_item', 'placement')->where('status', 'yes')->where('staff_id', $user->id)->get();
 
         // return json_decode($placementAssets);
+        // dd($placementAssets);
         return view('users.show', compact('user', 'placementAssets'));
     }
 

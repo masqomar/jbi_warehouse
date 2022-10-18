@@ -105,7 +105,6 @@ class MutationController extends Controller
                     'placement_code' => $placementCode,
                     'date' => $request->date,
                     'room_id' => $request->room_id,
-                    'staff_id' => $request->staff_id,
                     'description' => $request->placement_description,
                     'type' => 'Mutasi',
                     'condition' => $request->condition,
@@ -132,6 +131,7 @@ class MutationController extends Controller
                         'placement_id' => $newPlacement,
                         'asset_item_id' => $cart['asset_item_id'],
                         'company_id' => Auth::user()->company_id,
+                        'staff_id' => $request->staff_id,
                         'status' => 'Yes'
                     ]);
 

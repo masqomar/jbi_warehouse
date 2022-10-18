@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('placement_id')->constrained('placements')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('company_id')->constrained('companies')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('staff_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('asset_item_id');
             $table->enum('status', ['Yes', 'No']);
             $table->timestamps();

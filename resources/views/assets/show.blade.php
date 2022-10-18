@@ -99,7 +99,7 @@
                                         <td class="text-center">{{ $item->full_code }}</td>
                                         <td class="text-center">{{ $item->status }}</td>
                                         <td class="text-center">{{ $item->placement_item ? $item->placement_item->placement->room->name : '-' }}</td>
-                                        <td class="text-center">{{ $item->placement_item ? $item->placement_item->placement->staff->name : '-' }}</td>
+                                        <td class="text-center">{{ $item->placement_item ? $item->placement_item->staff->name : '-' }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

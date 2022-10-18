@@ -31,6 +31,7 @@ class StoreAssetRequest extends FormRequest
             'price' => 'required|numeric',
             'description' => 'nullable',
             'category_id' => 'required|exists:App\Models\Category,id',
+            'asset_image' => 'required|image'
         ];
     }
 }

@@ -14,7 +14,7 @@ class PlacementItem extends Model
      *
      * @var string[]
      */
-    protected $fillable = ['placement_id', 'asset_item_id', 'company_id', 'status'];
+    protected $fillable = ['placement_id', 'asset_item_id', 'staff_id', 'company_id', 'status'];
 
     /**
      * The attributes that should be cast.
@@ -36,5 +36,10 @@ class PlacementItem extends Model
     public function company()
     {
         return $this->belongsTo(\App\Models\Company::class);
+    }
+
+    public function staff()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'staff_id', 'id');
     }
 }

@@ -113,7 +113,7 @@ class AssetController extends Controller
         $asset->load('unit:id,name', 'category:id,code', 'company:id,code');
         $assetItems = AssetItem::with('placement_item')->where('asset_id', $asset->id)->get();
 
-        return json_decode($assetItems);
+        // return json_decode($assetItems);
 
         return view('assets.show', compact('asset', 'assetItems'));
     }

@@ -41,8 +41,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="asset_item_id">{{ __('AssetItem') }}</label>
-                                        <select class="form-select" name="asset_item_id" id="asset_item_id" class="form-control" required>
-                                            <option value="" selected disabled>-- {{ __('Select assetitem') }} --</option>
+                                        <select class="choices form-select" name="asset_item_id" id="asset_item_id" class="form-control" required>
 
                                             @foreach ($assetItems as $assetItem)
                                             <option value="{{ $assetItem->id }}" {{ isset($assetMaintenance) && $assetMaintenance->asset_item_id == $assetItem->id ? 'selected' : (old('asset_item_id') == $assetItem->id ? 'selected' : '') }}>
@@ -89,3 +88,11 @@
     </section>
 </div>
 @endsection
+
+@push('css')
+<link rel="stylesheet" href="{{ asset('mazer') }}/css/pages/form-element-select.css">
+@endpush
+
+@push('js')
+<script src="{{ asset('mazer') }}/js/extensions/form-element-select.js"></script>
+@endpush

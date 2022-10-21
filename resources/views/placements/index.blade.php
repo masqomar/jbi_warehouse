@@ -42,7 +42,6 @@
                                         <th>{{ __('Placement Code') }}</th>
                                         <th>{{ __('Date') }}</th>
                                         <th>{{ __('Room') }}</th>
-                                        <th>{{ __('User') }}</th>
                                         <th>{{ __('Description') }}</th>
                                         <th>{{ __('Type') }}</th>
                                         <th>{{ __('User') }}</th>
@@ -90,10 +89,6 @@
             {
                 data: 'room',
                 name: 'room.name'
-            },
-            {
-                data: 'user',
-                name: 'user.name'
             },
             {
                 data: 'description',

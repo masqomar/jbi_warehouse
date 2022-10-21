@@ -39,10 +39,14 @@ class UserController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $users = User::with('roles:id,name');
+            $users = User::with('roles:id,name', 'devision', 'company');
 
             return Datatables::of($users)
-                ->addColumn('action', 'users.include.action')
+                ->addColumn('devision', function ($row) {
+                    return $row->devision ? $row->devision->name : '-';
+                })->addColumn('company', function ($row) {
+                    return $row->company ? $row->company->code : '-';
+                })->addColumn('action', 'users.include.action')
                 ->addColumn('role', function ($row) {
                     return $row->getRoleNames()->toArray() !== [] ? $row->getRoleNames()[0] : '-';
                 })
@@ -128,7 +132,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $user->load('roles:id,name');
+        $user->load('roles:id,name', 'devision', 'company');
         $placementAssets = PlacementItem::with('asset_item', 'placement')->where('status', 'yes')->where('staff_id', $user->id)->get();
 
         // return json_decode($placementAssets);
@@ -142,11 +146,21 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $user, Request $request)
     {
         $user->load('roles:id,name');
+        $companies = Company::get();
+        $query = Devision::query();
 
-        return view('users.edit', compact('user'));
+        if ($request->ajax()) {
+            $devisions = Devision::where("company_id", $request->company_id)
+                ->get(["name", "id"]);
+
+            return response(['devisions' => $devisions]);
+        }
+        $devisions = $query->get();
+
+        return view('users.edit', compact('user', 'companies', 'devisions'));
     }
 
     /**

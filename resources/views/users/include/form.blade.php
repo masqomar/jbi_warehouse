@@ -47,11 +47,11 @@
             <label for="company_id">{{ __('Company') }}</label>
             <select name="company_id" id="company_id" class="form-control">
                 <option value="">-- Select Company --</option>
-                @if(count($companies) > 0)
+
                 @foreach ($companies as $id)
                 <option value="{{$id->id}}">{{$id->name}}</option>
                 @endforeach
-                @endif
+
             </select>
             @error('company_id')
             <div class="invalid-feedback">
@@ -66,7 +66,7 @@
             <select id="devision-dropdown" name="devision_id" class="form-control">
             </select>
 
-            @error('company_id')
+            @error('devision_id')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
@@ -79,7 +79,7 @@
         <div class="form-group">
             <label for="role">{{ __('Role') }}</label>
             <select class="form-select" name="role" id="role" class="form-control">
-                <option value="" selected disabled>-- Select role --</option>
+                <option value="" selected disabled>-- Select Role --</option>
                 @foreach ($roles as $role)
                 <option value="{{ $role->id }}">{{ $role->name }}</option>
                 @endforeach

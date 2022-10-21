@@ -138,7 +138,7 @@
                                     </button>
                                 </td>
                                 <td class="text-right">
-                                $${ product.quantity * product.price}
+                                Rp.${ product.quantity * product.price}
                                 </td>
                             </tr>
                             `)

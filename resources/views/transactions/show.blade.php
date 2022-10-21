@@ -32,8 +32,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->product_name }}</td>
                             <td>{{ $item->qty }}</td>
-                            <td>{{ $transaction->purpose }}</td>
-                            <td>{{ $transaction->description }}</td>
+                            <td>{{ $transaction->purpose ? $transaction->purpose : '-' }}</td>
+                            <td>{{ $transaction->description ? $transaction->description : '-' }}</td>
                         </tr>
                         @empty
                         <tr>

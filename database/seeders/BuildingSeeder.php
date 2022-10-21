@@ -41,7 +41,7 @@ class BuildingSeeder extends Seeder
                 'company_id' => 2,
             ],
             [
-                'name' => 'Hall Depan',
+                'name' => 'Office',
                 'phone' => '9999999',
                 'address' => 'Pare Kediri',
                 'owner' => 'JB',

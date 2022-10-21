@@ -88,18 +88,47 @@
                                         <th class="text-center">No.</th>
                                         <th class="text-center">Code</th>
                                         <th class="text-center">Status</th>
+                                        <th class="text-center">Condition</th>
+                                        <th class="text-center">Note</th>
                                         <th class="text-center">Current Location</th>
                                         <th class="text-center">PIC</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($assetItems as $key => $item)
+                                    @foreach($assetItems as $key => $assetItem)
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
-                                        <td class="text-center">{{ $item->full_code }}</td>
-                                        <td class="text-center">{{ $item->status }}</td>
-                                        <td class="text-center">{{ $item->placement_item ? $item->placement_item->placement->room->name : '-' }}</td>
-                                        <td class="text-center">{{ $item->placement_item ? $item->placement_item->staff->name : '-' }}</td>
+                                        <td class="text-center">{{ $assetItem->full_code }}</td>
+                                        @if ($assetItem->status === 'Tersedia')
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        @endif
+                                        @if ($assetItem->status === 'Diservis')
+                                        <td class="text-center">{{ $assetItem->status }}</td>
+                                        <td class="text-center">Rusak</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        @endif
+                                        @if ($assetItem->status === 'Dipinjam')
+                                        <td class="text-center">{{ $assetItem->status }}</td>
+                                        <td class="text-center">Rusak</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        @endif
+                                        @foreach ($assetItem->placement_item as $placementItem)
+                                        @if ($placementItem->status === 'Yes')
+                                        <td class="text-center">{{ $placementItem->placement->type }}</td>
+                                        <td class="text-center">{{ $placementItem->placement->condition }}</td>
+                                        <td class="text-center">{{ $placementItem->placement->description }}</td>
+                                        <td class="text-center">{{ $placementItem->placement->room->name }}</td>
+                                        <td class="text-center">{{ $placementItem->staff->name }}</td>
+                                        @endif
+                                        @endforeach
                                     </tr>
                                     @endforeach
                                 </tbody>

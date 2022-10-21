@@ -211,6 +211,46 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Person In Charge (PIC)</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="picTable">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">No.</th>
+                                                <th class="text-center">Asset</th>
+                                                <th class="text-center">Code</th>
+                                                <th class="text-center">Specification</th>
+                                                <th class="text-center">Type</th>
+                                                <th class="text-center">Condition</th>
+                                                <th class="text-center">Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($picAssets as $key => $item)
+                                            <tr>
+                                                <td class="text-center">{{$key+1}}</td>
+                                                <td class="text-center">{{ $item->asset_item ? $item->asset_item->asset->name : '-' }}</td>
+                                                <td class="text-center">{{ $item ? $item->asset_item_id : '-' }}</td>
+                                                <td class="text-center">{{ $item->asset_item ? $item->asset_item->asset->specification : '-' }}</td>
+                                                <td class="text-center">{{ $item->placement ? $item->placement->type : '-' }}</td>
+                                                <td class="text-center">{{ $item->placement ? $item->placement->condition : '-' }}</td>
+                                                <td class="text-center">{{ $item->placement ? $item->placement->description : '-' }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -228,6 +268,9 @@
 <script>
     $(document).ready(function() {
         $('#myTable').DataTable();
+    });
+    $(document).ready(function() {
+        $('#picTable').DataTable();
     });
 </script>
 @endpush

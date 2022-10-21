@@ -197,6 +197,7 @@ return [
         ['group' => 'transactions', 'lists' => ['view transaction', 'create transaction', 'edit transaction', 'delete transaction']],
         ['group' => 'mutations', 'lists' => ['view mutation', 'create mutation', 'edit mutation', 'delete mutation']],
         ['group' => 'assetmaintenances', 'lists' => ['view assetmaintenance', 'create assetmaintenance', 'edit assetmaintenance', 'delete assetmaintenance']],
-        // Don't remove this comment, it will used as 'search param' to generate a new permission
+        ['group' => 'procurements', 'lists' => ['view procurement', 'create procurement', 'edit procurement', 'delete procurement']], 
+		// Don't remove this comment, it will used as 'search param' to generate a new permission
     ],
 ];

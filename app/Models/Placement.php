@@ -14,7 +14,7 @@ class Placement extends Model
 	 *
 	 * @var string[]
 	 */
-	protected $fillable = ['date', 'room_id', 'staff_id', 'description', 'type', 'created_by', 'company_id'];
+	protected $fillable = ['date', 'room_id', 'description', 'type', 'created_by', 'company_id'];
 
 	/**
 	 * The attributes that should be cast.
@@ -31,11 +31,6 @@ class Placement extends Model
 	public function user()
 	{
 		return $this->belongsTo(\App\Models\User::class, 'created_by', 'id');
-	}
-
-	public function staff()
-	{
-		return $this->belongsTo(\App\Models\User::class, 'staff_id', 'id');
 	}
 
 	public function company()

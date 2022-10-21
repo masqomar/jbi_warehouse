@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AssetItem;
 use App\Models\ComingProduct;
 use App\Models\Company;
+use App\Models\PlacementItem;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\User;
@@ -24,6 +25,10 @@ class DashboardController extends Controller
         $latestTransactions = Transaction::latest()->where('company_id', auth()->user()->company_id)->paginate(5);
         $latestComingProducts = ComingProduct::latest()->where('company_id', auth()->user()->company_id)->paginate(5);
 
-        return view('dashboard', compact('companyCount', 'userCount', 'productCount', 'assetItemCount', 'poTimes', 'latestTransactions', 'latestComingProducts'));
+
+        //PIC
+        $picAssets = PlacementItem::with('asset_item', 'placement')->where('status', 'yes')->where('staff_id', auth()->user()->id)->get();
+
+        return view('dashboard', compact('companyCount', 'userCount', 'productCount', 'assetItemCount', 'poTimes', 'latestTransactions', 'latestComingProducts', 'picAssets'));
     }
 }

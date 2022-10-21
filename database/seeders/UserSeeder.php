@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'JBI',
+            'name' => 'Qomar',
             'email' => 'jbi@jbi.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -24,8 +24,35 @@ class UserSeeder extends Seeder
             'company_id' => 1
         ]);
         User::create([
-            'name' => 'LC',
+            'name' => 'Ismail',
+            'email' => 'jbi1@jbi.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 2,
+            'company_id' => 1
+        ]);
+        User::create([
+            'name' => 'Sunan',
+            'email' => 'jbi2@jbi.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 3,
+            'company_id' => 1
+        ]);
+        User::create([
+            'name' => 'Boy',
             'email' => 'lc@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 1,
+            'company_id' => 2
+        ]);
+        User::create([
+            'name' => 'Rizal',
+            'email' => 'lc1@lc.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => \Str::random(10),
@@ -33,31 +60,94 @@ class UserSeeder extends Seeder
             'company_id' => 2
         ]);
         User::create([
-            'name' => 'JB',
+            'name' => 'Roby',
+            'email' => 'lc2@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 3,
+            'company_id' => 2
+        ]);
+        User::create([
+            'name' => 'Ari',
             'email' => 'jb@jb.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => \Str::random(10),
+            'devision_id' => 1,
+            'company_id' => 3
+        ]);
+        User::create([
+            'name' => 'Resti',
+            'email' => 'jb1@jb.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
             'devision_id' => 2,
             'company_id' => 3
         ]);
         User::create([
-            'name' => 'AN Najah',
+            'name' => 'Maria',
+            'email' => 'jb2@jb.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 3,
+            'company_id' => 3
+        ]);
+        User::create([
+            'name' => 'Aga',
             'email' => 'an@an.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => \Str::random(10),
-            'devision_id' => 2,
-            'company_id' => 3
+            'devision_id' => 1,
+            'company_id' => 4
         ]);
         User::create([
-            'name' => 'LC Bogor',
-            'email' => 'lcb@lcb.com',
+            'name' => 'Rina',
+            'email' => 'an1@an.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => \Str::random(10),
             'devision_id' => 2,
-            'company_id' => 3
+            'company_id' => 4
+        ]);
+        User::create([
+            'name' => 'Agam',
+            'email' => 'an2@an.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 3,
+            'company_id' => 4
+        ]);
+        User::create([
+            'name' => 'Cusin',
+            'email' => 'lcb@lcb.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 1,
+            'company_id' => 5
+        ]);
+        User::create([
+            'name' => 'Ria',
+            'email' => 'lcb1@lcb.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 2,
+            'company_id' => 5
+        ]);
+        User::create([
+            'name' => 'Panjul',
+            'email' => 'lcb2@lcb.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 3,
+            'company_id' => 5
         ]);
     }
 }

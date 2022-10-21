@@ -47,10 +47,6 @@
                                     <td>{{ $placement->room ? $placement->room->name : '' }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold">{{ __('User') }}</td>
-                                    <td>{{ $placement->user ? $placement->user->name : '' }}</td>
-                                </tr>
-                                <tr>
                                     <td class="fw-bold">{{ __('Description') }}</td>
                                     <td>{{ isset($placement->description) ? $placement->description : '-' }}</td>
                                 </tr>
@@ -84,6 +80,7 @@
                                         <th class="text-center">Asset</th>
                                         <th class="text-center">Code</th>
                                         <th class="text-center">Status</th>
+                                        <th class="text-center">PIC</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -93,6 +90,7 @@
                                         <td class="text-center">{{ $placement->room->name}}</td>
                                         <td class="text-center">{{ $item->asset_item->full_code}}</td>
                                         <td class="text-center">{{ $item->status}}</td>
+                                        <td class="text-center">{{ $item->staff->name}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Http\Requests\{StoreRoomRequest, UpdateRoomRequest};
+use App\Imports\RoomsImport;
 use App\Models\Building;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 
 class RoomController extends Controller
@@ -77,11 +80,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        $room->load(
-            'building:id,name',
-
-            'company:id,code'
-        );
+        $room->load('building:id,name', 'company:id,code');
 
         return view('rooms.show', compact('room'));
     }
@@ -94,13 +93,10 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        $room->load(
-            'building:id,name',
+        $room->load('building:id,name', 'company:id,code');
+        $gedung = Building::where('company_id', auth()->user()->company_id)->get();
 
-            'company:id,code'
-        );
-
-        return view('rooms.edit', compact('room'));
+        return view('rooms.edit', compact('room', 'gedung'));
     }
 
     /**
@@ -112,7 +108,7 @@ class RoomController extends Controller
      */
     public function update(UpdateRoomRequest $request, Room $room)
     {
-        $room->update($request->validated());
+        $room->update($request->validated() + (['company_id' => auth()->user()->company_id]));
 
         return redirect()
             ->route('rooms.index')
@@ -138,5 +134,11 @@ class RoomController extends Controller
                 ->route('rooms.index')
                 ->with('error', __('The Room can`t be deleted because it is related to another table.'));
         }
+    }
+
+    public function Import(Request $request)
+    {
+        Excel::import(new RoomsImport, $request->file('file')->store('temp'));
+        return back();
     }
 }

@@ -45,7 +45,7 @@ class AssetItem extends Model
 
 	public function placement_item()
 	{
-		return $this->hasOne(PlacementItem::class, 'asset_item_id', 'full_code');
+		return $this->hasMany(PlacementItem::class, 'asset_item_id', 'full_code');
 	}
 
 	public static function boot()

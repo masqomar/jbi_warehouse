@@ -60,6 +60,7 @@ Route::resource('coming-products', App\Http\Controllers\ComingProductController:
 Route::resource('buildings', App\Http\Controllers\BuildingController::class)->middleware('auth');
 
 Route::resource('rooms', App\Http\Controllers\RoomController::class)->middleware('auth');
+Route::post('rooms/import', [App\Http\Controllers\RoomController::class, 'import'])->name('rooms.import');
 
 Route::resource('devisions', App\Http\Controllers\DevisionController::class)->middleware('auth');
 
@@ -80,3 +81,5 @@ Route::delete('mutations/remove-from-cart', [MutationController::class, 'remove'
 Route::resource('mutations', App\Http\Controllers\MutationController::class)->middleware('auth');
 
 Route::resource('asset-maintenances', App\Http\Controllers\AssetMaintenanceController::class)->middleware('auth');
+
+Route::resource('procurements', App\Http\Controllers\ProcurementController::class)->middleware('auth');

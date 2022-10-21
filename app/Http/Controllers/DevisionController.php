@@ -98,7 +98,7 @@ class DevisionController extends Controller
      */
     public function update(UpdateDevisionRequest $request, Devision $devision)
     {
-        $devision->update($request->validated());
+        $devision->update($request->validated() + (['company_id' => auth()->user()->company_id]));
 
         return redirect()
             ->route('devisions.index')

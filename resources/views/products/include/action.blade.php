@@ -1,17 +1,17 @@
 <td>
-    @can('view asset')
+    @can('view product')
     <a href="{{ route('products.show', $model->id) }}" class="btn btn-outline-success btn-sm">
         <i class="fa fa-eye"></i>
     </a>
     @endcan
 
-    @can('edit asset')
+    @can('edit product')
     <a href="{{ route('products.edit', $model->id) }}" class="btn btn-outline-primary btn-sm">
         <i class="fa fa-pencil-alt"></i>
     </a>
     @endcan
 
-    @can('delete asset')
+    @can('delete product')
     <form action="{{ route('products.destroy', $model->id) }}" method="post" class="d-inline" onsubmit="return confirm('Are you sure to delete this record?')">
         @csrf
         @method('delete')

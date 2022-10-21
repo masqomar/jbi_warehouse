@@ -13,8 +13,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="building_id">{{ __('Building') }}</label>
-            <select class="form-select" name="building_id" id="building_id" class="form-control" required>
-                <option value="" selected disabled>-- {{ __('Select building') }} --</option>
+            <select class="choices form-select" name="building_id" class="form-control" required>
 
                 @foreach ($gedung as $building)
                 <option value="{{ $building->id }}" {{ isset($room) && $room->building_id == $building->id ? 'selected' : (old('building_id') == $building->id ? 'selected' : '') }}>
@@ -35,3 +34,12 @@
         </div>
     </div>
 </div>
+
+
+@push('css')
+<link rel="stylesheet" href="{{ asset('mazer') }}/css/pages/form-element-select.css">
+@endpush
+
+@push('js')
+<script src="{{ asset('mazer') }}/js/extensions/form-element-select.js"></script>
+@endpush

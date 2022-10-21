@@ -241,16 +241,6 @@ class ViewServiceProvider extends ServiceProvider
             'placements.edit',
         ], function ($view) {
             return $view->with(
-                'users',
-                \App\Models\User::select('id', 'name')->get()
-            );
-        });
-
-        View::composer([
-            'placements.create',
-            'placements.edit',
-        ], function ($view) {
-            return $view->with(
                 'companies',
                 \App\Models\Company::select('id', 'code')->get()
             );
@@ -273,6 +263,36 @@ class ViewServiceProvider extends ServiceProvider
             return $view->with(
                 'assetItems',
                 \App\Models\AssetItem::select('id', 'code', 'full_code')->get()
+            );
+        });
+
+        View::composer([
+            'procurements.create',
+            'procurements.edit',
+        ], function ($view) {
+            return $view->with(
+                'suppliers',
+                \App\Models\Supplier::select('id', 'name')->get()
+            );
+        });
+
+        View::composer([
+            'procurements.create',
+            'procurements.edit',
+        ], function ($view) {
+            return $view->with(
+                'users',
+                \App\Models\User::select('id', 'name')->get()
+            );
+        });
+
+        View::composer([
+            'procurements.create',
+            'procurements.edit',
+        ], function ($view) {
+            return $view->with(
+                'companies',
+                \App\Models\Company::select('id', 'code', 'name')->get()
             );
         });
 

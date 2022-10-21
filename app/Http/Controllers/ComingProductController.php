@@ -107,16 +107,9 @@ class ComingProductController extends Controller
      */
     public function show(ComingProduct $comingProduct)
     {
-        $comingProduct->load(
-            'product:id,name',
-            'user:id,name',
+        $comingProduct->load('product:id,name', 'user:id,name', 'company:id,code', 'supplier:id,name');
 
-            'company:id,code',
-
-            'supplier:id,name'
-        );
-
-        return view('coming-products.show', compact('comingproduct'));
+        return view('coming-products.show', compact('comingProduct'));
     }
 
     /**
@@ -136,7 +129,7 @@ class ComingProductController extends Controller
             'supplier:id,name'
         );
 
-        return view('coming-products.edit', compact('comingproduct'));
+        return view('coming-products.edit', compact('comingProduct'));
     }
 
     /**

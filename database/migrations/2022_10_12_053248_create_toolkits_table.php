@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('toolkits', function (Blueprint $table) {
             $table->id();
             $table->date('taken_date');
-			$table->foreignId('member_id')->constrained('members')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('member_id');
             $table->timestamps();
         });
     }

@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('toolkit_items', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-			$table->foreignId('toolkit_id')->constrained('toolkits')->cascadeOnUpdate()->cascadeOnDelete();
-			$table->foreignId('member_id')->constrained('members')->cascadeOnUpdate()->cascadeOnDelete();
-			$table->foreignId('product_id')->constrained('products')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('toolkit_id');
+            $table->foreignId('member_id');
+            $table->foreignId('product_id');
             $table->timestamps();
         });
     }

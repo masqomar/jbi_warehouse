@@ -45,8 +45,6 @@ class PlacementController extends Controller
                     return $row->room ? $row->room->name : '-';
                 })->addColumn('user', function ($row) {
                     return $row->user ? $row->user->name : '-';
-                })->addColumn('user', function ($row) {
-                    return $row->user ? $row->user->name : '-';
                 })->addColumn('company', function ($row) {
                     return $row->company ? $row->company->code : '-';
                 })->addColumn('action', 'placements.include.action')
@@ -107,7 +105,7 @@ class PlacementController extends Controller
                     'company_id' => Auth::user()->company_id
                 ]);
 
-                AssetItem::where('id', $id[$i])
+                AssetItem::where('full_code', $id[$i])
                     ->update([
                         'status' => 'Ditempatkan'
                     ]);

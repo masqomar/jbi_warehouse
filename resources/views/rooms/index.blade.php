@@ -32,6 +32,13 @@
         @endcan
 
         <div class="row">
+            <form action="{{ route('rooms.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" class="form-control">
+                <br>
+                <button class="btn btn-success">Import Data</button>
+            </form>
+
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">

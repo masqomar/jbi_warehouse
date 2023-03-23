@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class AllProductController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('permission:view all-product')->only('index', 'show');

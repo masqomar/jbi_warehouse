@@ -8,7 +8,9 @@ use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class TransactionController extends Controller
 {
@@ -22,10 +24,18 @@ class TransactionController extends Controller
 
     public function index()
     {
-        $transactions = Transaction::latest()->where('company_id', auth()->user()->company_id)->get();
+        if (request()->ajax()) {
+            $transactions = Transaction::where('company_id', auth()->user()->company_id);
 
-        return view('transactions.index', compact('transactions'));
+            return DataTables::of($transactions)
+                ->addColumn('action', 'transactions.include.action')
+                ->toJson();
+        }
+
+
+        return view('transactions.index');
     }
+
     public function store(Request $request)
     {
         $params = $request->all();
@@ -45,6 +55,8 @@ class TransactionController extends Controller
             ];
 
             $transaction = Transaction::create($transactionParams);
+
+            activity()->log('Transaksi Keluar');
 
             $carts = Cart::all();
 

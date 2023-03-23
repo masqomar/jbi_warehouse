@@ -52,7 +52,7 @@
                 <div class="row mt-2">
                     <div class="col">PIC:</div>
                     <div class="col text-right">
-                        <input type="text" name="pic" class="form-control">
+                        <input type="text" name="pic" class="form-control" required>
                     </div>
                 </div>
                 <hr>
@@ -211,7 +211,7 @@
                             <img src="http://lcgudang.test/storage/${product.image.id}/${product.image.file_name}" / width="90px" height="90px" alt="product_image">
                     
                                 <h6 style="margin: 0;">${product.name}</h6>
-                                <span >(${product.price})</span>
+                                <span >Rp. ${product.price}</span>
                             </button>
                             `)
                     });

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('procurement_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('invoice_number')->constrained('procurements')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('asset_item')->constrained('assets')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('invoice_number');
+            $table->foreignId('asset_id');
             $table->foreignId('company_id')->constrained('companies')->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('description')->nullable();
             $table->integer('price');

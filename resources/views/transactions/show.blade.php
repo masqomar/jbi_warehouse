@@ -7,12 +7,14 @@
 
     <div class="card">
         <div class="card-header">
-            <h6 class="m-0 font-weight-bold text-primary">
-                {{ __('List Product') }}
-                <a href="{{ route('transactions.index') }}" class="btn btn-dark float-right">
-                    <span class="text">{{ __('Go Back') }}</span>
-                </a>
-            </h6>
+            <div>
+                <p style="float: left;">{{ __('List Transaction') }}</p>
+                <p style="float: right">
+                    <a href="{{ route('transactions.index') }}" class="btn btn-dark float-right">
+                        <span class="text">{{ __('Go Back') }}</span>
+                    </a>
+                </p>
+            </div>
         </div>
         <div class="card-body">
             <div class="card-responsive">
@@ -46,7 +48,7 @@
         </div>
         <div class="card-footer text-right">
             <h3>Total : @rupiah( $transaction->total_price )</h3>
-            <button class="btn btn-success" onclick="notaKecil('{{ route('transactions.print_struck', $transaction->id) }}', 'print_struck')">Print</button>
+            <button class="btn btn-success" onclick="notaKecil('{{ route('transactions.print_struck', $transaction->id) }}', 'print_struck')">Print Nota</button>
         </div>
     </div>
 </div>

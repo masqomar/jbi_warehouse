@@ -59,8 +59,8 @@
 <body onload="window.print()">
     <button class="btn-print" style="position: absolute; right: 1rem; top: rem;" onclick="window.print()">Print</button>
     <div class="text-center">
-        <h3 style="margin-bottom: 5px;">Nama Perusahaan</h3>
-        <p>Alamat</p>
+        <h3 style="margin-bottom: 5px;">Language Center</h3>
+        <p>Nota Kecil</p>
     </div>
     <br>
     <div>
@@ -69,39 +69,16 @@
     </div>
     <div class="clear-both" style="clear: both;"></div>
     <p>No: {{ $transaction->transaction_code }}</p>
-    <p class="text-center">===================================</p>
 
     <br>
     <table width="100%" style="border: 0;">
         @foreach ($transaction->transaction_details as $transaction_detail)
-        <tr>
-            <td colspan="3">{{ $transaction_detail->name }}</td>
-        </tr>
-        <tr>
-            <td>{{ $transaction_detail->qty }} x {{ $transaction_detail->base_price }}</td>
-            <td></td>
-            <td class="text-right">{{ $transaction_detail->qty * $transaction_detail->base_price }}</td>
-        </tr>
+        <div>
+            <p style="float: left;">{{ $transaction_detail->product_name }}</p>
+            <p style="float: right">{{ $transaction_detail->qty }} x</p>
+        </div>
         @endforeach
     </table>
-    <p class="text-center">-----------------------------------</p>
-
-    <table width="100%" style="border: 0;">
-        <tr>
-            <td>Total Harga:</td>
-            <td class="text-right">{{ $transaction->total_price }}</td>
-        </tr>
-        <tr>
-            <td>Accept:</td>
-            <td class="text-right">{{ $transaction->accept }}</td>
-        </tr>
-        <tr>
-            <td>Return:</td>
-            <td class="text-right">{{ $transaction->return }}</td>
-        </tr>
-    </table>
-
-    <p class="text-center">===================================</p>
     <p class="text-center">-- TERIMA KASIH --</p>
 
     <script>

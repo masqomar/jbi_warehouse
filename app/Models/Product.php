@@ -6,10 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Product extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, LogsActivity;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->useLogName('Transaksi Barang')
+            ->logOnly(['user.name', 'company.name', 'name', 'full_code', 'quantity']);
+    }
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
@@ -35,15 +44,22 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(\App\Models\User::class);
     }
 
+    public function coming_product()
+    {
+        return $this->hasMany(\App\Models\ComingProduct::class);
+    }
+
+    public function transaction_detail()
+    {
+        return $this->hasMany(\App\Models\TransactionDetail::class);
+    }
+
+
+
     public function getImageAttribute()
     {
         return $this->getMedia('product_image')->last();
     }
-
-    // public function getImageAttribute()
-    // {
-    //     return $this->getMedia('image')->last();
-    // }
 
     public static function boot()
     {

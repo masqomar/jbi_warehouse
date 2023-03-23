@@ -9,6 +9,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
+        "arcanedev/log-viewer": "~9",
+        "barryvdh/laravel-dompdf": "^2.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.7",
@@ -21,6 +23,7 @@
         "milon/barcode": "^9.0",
         "psr/simple-cache": "2.0",
         "simplesoftwareio/simple-qrcode": "^4.2",
+        "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-medialibrary": "^10.5",
         "spatie/laravel-permission": "^5.5",
         "yajra/laravel-datatables-oracle": "~9.0"

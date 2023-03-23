@@ -29,6 +29,9 @@ class DashboardController extends Controller
         //PIC
         $picAssets = PlacementItem::with('asset_item', 'placement')->where('status', 'yes')->where('staff_id', auth()->user()->id)->get();
 
+        // $cek = User::with('company')->get();
+
+        // return json_decode($cek);
         return view('dashboard', compact('companyCount', 'userCount', 'productCount', 'assetItemCount', 'poTimes', 'latestTransactions', 'latestComingProducts', 'picAssets'));
     }
 }

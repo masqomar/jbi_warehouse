@@ -35,7 +35,7 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        $product = Product::create($request->validated() + ['company_id' => Auth::user()->company_id, 'user_id' => Auth::user()->id]);
+        $product = Product::create($request->validated() + ['first_stock' => $request->quantity, 'company_id' => Auth::user()->company_id, 'user_id' => Auth::user()->id]);
 
         if ($request->hasFile('product_image') && $request->file('product_image')->isValid()) {
             $product->addMediaFromRequest('product_image')->toMediaCollection('product_image');

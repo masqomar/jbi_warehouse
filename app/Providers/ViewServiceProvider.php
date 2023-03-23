@@ -296,6 +296,16 @@ class ViewServiceProvider extends ServiceProvider
             );
         });
 
+        View::composer([
+            'electricities.create',
+            'electricities.edit',
+        ], function ($view) {
+            return $view->with(
+                'buildings',
+                \App\Models\Building::select('id', 'name')->get()
+            );
+        });
+
         // don`t remove this comment, it will generate view composer
     }
 }

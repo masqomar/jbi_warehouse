@@ -135,245 +135,258 @@ return [
      * This code below always change when you using a generator and maybe you must to lint or format the code.
      */
     'sidebars' => [
-    [
-        'header' => 'Menu Cabang',
-        'permissions' => [
-            'view company',
-            'view category',
-            'view unit',
-            'view inventory',
-            'view supplier',
-            'view comingproduct',
-            'view building',
-            'view room',
-            'view devision',
-            'view asset',
-            'view assetitem',
-            'view placement',
-            'view placementitem',
-            'view mutation',
-            'view mutationfrom',
-            'view mutationto',
-            'view assetmaintenance',
-            'view procurement'
-        ],
-        'menus' => [
-            [
-                'title' => 'Master Data',
-                'icon' => '<i class="bi bi-collection-fill"></i>',
-                'route' => null,
-                'permission' => null,
-                'permissions' => [
-                    'view test',
-                    'view company',
-                    'view building',
-                    'view room',
-                    'view devision'
-                ],
-                'submenus' => [
-                    [
-                        'title' => 'Entitas',
-                        'route' => '/companies',
-                        'permission' => 'view company'
-                    ],
-                    [
-                        'title' => 'Gedung / Camp',
-                        'route' => '/buildings',
-                        'permission' => 'view building'
-                    ],
-                    [
-                        'title' => 'Ruang / Kamar',
-                        'route' => '/rooms',
-                        'permission' => 'view room'
-                    ],
-                    [
-                        'title' => 'Devisi',
-                        'route' => '/devisions',
-                        'permission' => 'view devision'
-                    ]
-                ]
+        [
+            'header' => 'Menu Cabang',
+            'permissions' => [
+                'view company',
+                'view category',
+                'view unit',
+                'view inventory',
+                'view supplier',
+                'view comingproduct',
+                'view building',
+                'view room',
+                'view devision',
+                'view asset',
+                'view assetitem',
+                'view placement',
+                'view placementitem',
+                'view mutation',
+                'view mutationfrom',
+                'view mutationto',
+                'view assetmaintenance',
+                'view procurement',
+                'view electricity'
             ],
-            [
-                'title' => 'Master Barang',
-                'icon' => '<i class="bi bi-people"></i>',
-                'route' => null,
-                'permission' => null,
-                'permissions' => [
-                    'view category',
-                    'view unit',
-                    'view supplier'
-                ],
-                'submenus' => [
-                    [
-                        'title' => 'Kategori',
-                        'route' => '/categories',
-                        'permission' => 'view category'
+            'menus' => [
+                [
+                    'title' => 'Master Data',
+                    'icon' => '<i class="bi bi-collection-fill"></i>',
+                    'route' => null,
+                    'permission' => null,
+                    'permissions' => [
+                        'view test',
+                        'view company',
+                        'view building',
+                        'view room',
+                        'view devision'
                     ],
-                    [
-                        'title' => 'Satuan',
-                        'route' => '/units',
-                        'permission' => 'view unit'
-                    ],
-                    [
-                        'title' => 'Supplier',
-                        'route' => '/suppliers',
-                        'permission' => 'view supplier'
+                    'submenus' => [
+                        [
+                            'title' => 'Entitas',
+                            'route' => '/companies',
+                            'permission' => 'view company'
+                        ],
+                        [
+                            'title' => 'Gedung / Camp',
+                            'route' => '/buildings',
+                            'permission' => 'view building'
+                        ],
+                        [
+                            'title' => 'Ruang / Kamar',
+                            'route' => '/rooms',
+                            'permission' => 'view room'
+                        ],
+                        [
+                            'title' => 'Devisi',
+                            'route' => '/devisions',
+                            'permission' => 'view devision'
+                        ]
                     ]
-                ]
-            ],
-            [
-                'title' => 'Persediaan',
-                'icon' => '<i class="bi bi-people"></i>',
-                'route' => null,
-                'permission' => null,
-                'permissions' => [
-                    'view product',
-                    'view comingproduct',
-                    'view outproduct'
                 ],
-                'submenus' => [
-                    [
-                        'title' => 'Barang Persediaan',
-                        'route' => '/products',
-                        'permission' => 'view product'
+                [
+                    'title' => 'Master Barang',
+                    'icon' => '<i class="bi bi-people"></i>',
+                    'route' => null,
+                    'permission' => null,
+                    'permissions' => [
+                        'view category',
+                        'view unit',
+                        'view supplier'
                     ],
-                    [
-                        'title' => 'Persediaan Masuk',
-                        'route' => '/coming-products',
-                        'permission' => 'view comingproduct'
-                    ],
-                    [
-                        'title' => 'Persediaan Keluar',
-                        'route' => '/transactions',
-                        'permission' => 'view outproduct'
+                    'submenus' => [
+                        [
+                            'title' => 'Kategori',
+                            'route' => '/categories',
+                            'permission' => 'view category'
+                        ],
+                        [
+                            'title' => 'Satuan',
+                            'route' => '/units',
+                            'permission' => 'view unit'
+                        ],
+                        [
+                            'title' => 'Supplier',
+                            'route' => '/suppliers',
+                            'permission' => 'view supplier'
+                        ]
                     ]
-                ]
-            ],
-            [
-                'title' => 'Inventaris',
-                'icon' => '<i class="bi bi-people"></i>',
-                'route' => null,
-                'permission' => null,
-                'permissions' => [
-                    'view asset',
-                    'view placement',
-                    'view mutation',
-                    'view assetmaintenance',
-                    'view procurement'
                 ],
-                'submenus' => [
-                    [
-                        'title' => 'Barang Inventaris',
-                        'route' => '/assets',
-                        'permission' => 'view asset'
+                [
+                    'title' => 'Persediaan',
+                    'icon' => '<i class="bi bi-people"></i>',
+                    'route' => null,
+                    'permission' => null,
+                    'permissions' => [
+                        'view product',
+                        'view comingproduct',
+                        'view outproduct',
+                        'view transaction',
+                        'view electricity'
                     ],
-                    [
-                        'title' => 'Penempatan',
-                        'route' => '/placements',
-                        'permission' => 'view placement'
+                    'submenus' => [
+                        [
+                            'title' => 'Barang Persediaan',
+                            'route' => '/products',
+                            'permission' => 'view product'
+                        ],
+                        [
+                            'title' => 'Persediaan Masuk',
+                            'route' => '/coming-products',
+                            'permission' => 'view comingproduct'
+                        ],
+                        [
+                            'title' => 'Persediaan Keluar',
+                            'route' => '/transactions',
+                            'permission' => 'view outproduct'
+                        ],
+                        [
+                            'title' => 'Laporan Persediaan',
+                            'route' => '/inventory-report',
+                            'permission' => 'view transaction'
+                        ],
+                        [
+                            'title' => 'Listrik Prabayar',
+                            'route' => '/electricities',
+                            'permission' => 'view electricity'
+                        ]
+                    ]
+                ],
+                [
+                    'title' => 'Inventaris',
+                    'icon' => '<i class="bi bi-people"></i>',
+                    'route' => null,
+                    'permission' => null,
+                    'permissions' => [
+                        'view asset',
+                        'view placement',
+                        'view mutation',
+                        'view assetmaintenance',
+                        'view procurement'
                     ],
-                    [
-                        'title' => 'Mutasi',
-                        'route' => '/mutations',
-                        'permission' => 'view mutation'
-                    ],
-                    [
-                        'title' => 'Perbaikan',
-                        'route' => '/asset-maintenances',
-                        'permission' => 'view assetmaintenance'
-                    ],
-                    [
-                        'title' => 'Procurements',
-                        'route' => '/procurements',
-                        'permission' => 'view procurement'
+                    'submenus' => [
+                        [
+                            'title' => 'Barang Inventaris',
+                            'route' => '/assets',
+                            'permission' => 'view asset'
+                        ],
+                        [
+                            'title' => 'Penempatan',
+                            'route' => '/placements',
+                            'permission' => 'view placement'
+                        ],
+                        [
+                            'title' => 'Mutasi',
+                            'route' => '/mutations',
+                            'permission' => 'view mutation'
+                        ],
+                        [
+                            'title' => 'Perbaikan',
+                            'route' => '/asset-maintenances',
+                            'permission' => 'view assetmaintenance'
+                        ],
+                        [
+                            'title' => 'Procurements',
+                            'route' => '/procurements',
+                            'permission' => 'view procurement'
+                        ]
                     ]
                 ]
             ]
-        ]
-    ],
-    [
-        'header' => 'Check In',
-        'permissions' => [
-            'view program',
-            'view member'
         ],
-        'menus' => [
-            [
-                'title' => 'Program',
-                'icon' => '<i class="bi bi-people-fill"></i>',
-                'route' => '/programs',
-                'permission' => 'view program',
-                'permissions' => [],
-                'submenus' => []
+        [
+            'header' => 'Check In',
+            'permissions' => [
+                'view program',
+                'view member'
             ],
-            [
-                'title' => 'Check In',
-                'icon' => '<i class="bi bi-people"></i>',
-                'route' => '/members',
-                'permission' => 'view member',
-                'permissions' => [],
-                'submenus' => []
+            'menus' => [
+                [
+                    'title' => 'Program',
+                    'icon' => '<i class="bi bi-people-fill"></i>',
+                    'route' => '/programs',
+                    'permission' => 'view program',
+                    'permissions' => [],
+                    'submenus' => []
+                ],
+                [
+                    'title' => 'Check In',
+                    'icon' => '<i class="bi bi-people"></i>',
+                    'route' => '/members',
+                    'permission' => 'view member',
+                    'permissions' => [],
+                    'submenus' => []
+                ]
             ]
-        ]
-    ],
-    [
-        'header' => 'Menu Pusat',
-        'permissions' => [
-            'view all-product',
-            'view role & permission'
         ],
-        'menus' => [
-            [
-                'title' => 'Laporan Persediaan',
-                'icon' => '<i class="bi bi-people-fill"></i>',
-                'route' => '/all-products',
-                'permission' => 'view all-product',
-                'permissions' => [],
-                'submenus' => []
+        [
+            'header' => 'Menu Pusat',
+            'permissions' => [
+                'view all-product',
+                'view role & permission'
             ],
-            [
-                'title' => 'Laporan Inventaris',
-                'icon' => '<i class="bi bi-person-check-fill"></i>',
-                'route' => '/errors',
-                'permission' => 'view role & permission',
-                'permissions' => [],
-                'submenus' => []
+            'menus' => [
+                [
+                    'title' => 'Laporan Persediaan',
+                    'icon' => '<i class="bi bi-people-fill"></i>',
+                    'route' => '/all-products',
+                    'permission' => 'view all-product',
+                    'permissions' => [],
+                    'submenus' => []
+                ],
+                [
+                    'title' => 'Laporan Inventaris',
+                    'icon' => '<i class="bi bi-person-check-fill"></i>',
+                    'route' => '/errors',
+                    'permission' => 'view role & permission',
+                    'permissions' => [],
+                    'submenus' => []
+                ]
             ]
-        ]
-    ],
-    [
-        'header' => 'Users',
-        'permissions' => [
-            'view user',
-            'view role & permission',
-            'view permission'
         ],
-        'menus' => [
-            [
-                'title' => 'Users',
-                'icon' => '<i class="bi bi-people-fill"></i>',
-                'route' => '/users',
-                'permission' => 'view user',
-                'permissions' => [],
-                'submenus' => []
+        [
+            'header' => 'Users',
+            'permissions' => [
+                'view user',
+                'view role & permission',
+                'view permission'
             ],
-            [
-                'title' => 'Roles & permissions',
-                'icon' => '<i class="bi bi-person-check-fill"></i>',
-                'route' => '/roles',
-                'permission' => 'view role & permission',
-                'permissions' => [],
-                'submenus' => []
-            ],
-            [
-                'title' => 'Permissions',
-                'icon' => '<i class="bi bi-people"></i>',
-                'route' => '/permissions',
-                'permission' => 'view permission',
-                'permissions' => [],
-                'submenus' => []
+            'menus' => [
+                [
+                    'title' => 'Users',
+                    'icon' => '<i class="bi bi-people-fill"></i>',
+                    'route' => '/users',
+                    'permission' => 'view user',
+                    'permissions' => [],
+                    'submenus' => []
+                ],
+                [
+                    'title' => 'Roles & permissions',
+                    'icon' => '<i class="bi bi-person-check-fill"></i>',
+                    'route' => '/roles',
+                    'permission' => 'view role & permission',
+                    'permissions' => [],
+                    'submenus' => []
+                ],
+                [
+                    'title' => 'Permissions',
+                    'icon' => '<i class="bi bi-people"></i>',
+                    'route' => '/permissions',
+                    'permission' => 'view permission',
+                    'permissions' => [],
+                    'submenus' => []
+                ]
             ]
         ]
     ]
-]
 ];

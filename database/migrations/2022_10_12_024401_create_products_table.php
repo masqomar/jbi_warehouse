@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('code');
             $table->string('full_code');
             $table->integer('quantity');
+            $table->integer('first_stock');
             $table->integer('price');
             $table->integer('danger_level');
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnUpdate();

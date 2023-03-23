@@ -26,6 +26,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-lg-12">
+                @if (Auth::user()->company_id == 1)
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
                         <div class="card">
@@ -96,6 +97,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -143,7 +145,7 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Latest Transactions</h4>
+                                <h4>Latest Product Out</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -178,7 +180,7 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Latest Coming Products</h4>
+                                <h4>Latest Products In</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -193,11 +195,11 @@
                                         <tbody>
                                             @foreach ( $latestComingProducts as $latestComingProduct )
                                             <tr>
-                                                <td class="col-3">
+                                                <td class="col-auto">
                                                     <p class="font-bold mb-0">{{ $latestComingProduct->code }}</p>
                                                 </td>
                                                 <td class="col-auto">
-                                                    <p class=" mb-0"> {{ $latestComingProduct->date }}</p>
+                                                    <p class=" mb-0"> {{ $latestComingProduct->date->format('d-m-Y') }}</p>
                                                 </td>
                                                 <td class="col-auto">
                                                     <p class=" mb-0">@rupiah ( $latestComingProduct->price )</p>

@@ -149,5 +149,86 @@ class UserSeeder extends Seeder
             'devision_id' => 3,
             'company_id' => 5
         ]);
+        User::create([
+            'name' => 'Jogja1',
+            'email' => 'jogja1@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 1,
+            'company_id' => 6
+        ]);
+        User::create([
+            'name' => 'Jogja2',
+            'email' => 'jogja2@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 2,
+            'company_id' => 6
+        ]);
+        User::create([
+            'name' => 'Jogja2',
+            'email' => 'jogja3@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 3,
+            'company_id' => 6
+        ]);
+        User::create([
+            'name' => 'Bandung1',
+            'email' => 'Bandung1@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 1,
+            'company_id' => 7
+        ]);
+        User::create([
+            'name' => 'Bandung2',
+            'email' => 'Bandung2@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 2,
+            'company_id' => 7
+        ]);
+        User::create([
+            'name' => 'Bandung3',
+            'email' => 'Bandung3@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 3,
+            'company_id' => 7
+        ]);
+        User::create([
+            'name' => 'Bekasi1',
+            'email' => 'Bekasi1@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 1,
+            'company_id' => 8
+        ]);
+        User::create([
+            'name' => 'Bekasi2',
+            'email' => 'Bekasi2@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 2,
+            'company_id' => 8
+        ]);
+        User::create([
+            'name' => 'Bekasi3',
+            'email' => 'Bekasi3@lc.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => \Str::random(10),
+            'devision_id' => 3,
+            'company_id' => 7
+        ]);
     }
 }

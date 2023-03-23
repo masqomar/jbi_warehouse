@@ -76,7 +76,42 @@ class DevisionSeeder extends Seeder
                 'name' => 'Program',
                 'company_id' => 5,
             ],
-
+            [
+                'name' => 'Operasional',
+                'company_id' => 6,
+            ],
+            [
+                'name' => 'Marketing',
+                'company_id' => 6,
+            ],
+            [
+                'name' => 'Program',
+                'company_id' => 6,
+            ],
+            [
+                'name' => 'Operasional',
+                'company_id' => 7,
+            ],
+            [
+                'name' => 'Marketing',
+                'company_id' => 7,
+            ],
+            [
+                'name' => 'Program',
+                'company_id' => 7,
+            ],
+            [
+                'name' => 'Operasional',
+                'company_id' => 8,
+            ],
+            [
+                'name' => 'Marketing',
+                'company_id' => 8,
+            ],
+            [
+                'name' => 'Program',
+                'company_id' => 8,
+            ]
         ];
 
         Devision::insert($devisions);

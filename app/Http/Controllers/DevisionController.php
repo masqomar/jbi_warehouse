@@ -25,8 +25,7 @@ class DevisionController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            // $devisions = Devision::with('company:id,code')->where('company_id', auth()->user()->company_id);
-            $devisions = Devision::with('company:id,code');
+            $devisions = Devision::with('company:id,code')->where('company_id', auth()->user()->company_id);
 
             return DataTables::of($devisions)
                 ->addColumn('company', function ($row) {

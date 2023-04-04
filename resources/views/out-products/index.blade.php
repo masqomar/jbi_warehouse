@@ -208,7 +208,6 @@
                                 style="cursor: pointer; border: none;"
                                 value="${product.id}"
                             >
-                            <img src="http://lcgudang.test/storage/${product.image.id}/${product.image.file_name}" / width="90px" height="90px" alt="product_image">
                     
                                 <h6 style="margin: 0;">${product.name}</h6>
                                 <span >Rp. ${product.price}</span>

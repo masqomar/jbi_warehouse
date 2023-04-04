@@ -118,7 +118,7 @@ class CartController extends Controller
     public function scan(Request $request)
     {
         $product = Product::where('full_code', $request->productCode)->first();
-        dd($product);
+        // dd($product);
 
         $isExist = Cart::where('product_id', $product->id)->first();
 
@@ -127,7 +127,7 @@ class CartController extends Controller
         $itemQuantity = 0;
         if ($carts) {
             foreach ($carts as $cart) {
-                if ($cart->name == $product->name) {
+                if ($cart->product_id == $product->id) {
                     $itemQuantity = $cart->quantity;
                     break;
                 }

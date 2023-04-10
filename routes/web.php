@@ -28,8 +28,6 @@ require_once __DIR__ . '/generator.php';
 //Pusat
 Route::resource('all-products', App\Http\Controllers\AllProductController::class)->middleware('auth');
 
-
-
 //Cabang
 Route::resource('/', App\Http\Controllers\DashboardController::class)->middleware('auth');
 Route::get('log-activities', [App\Http\Controllers\LogActivityController::class, 'index'])->name('activities.index')->middleware('auth');
@@ -66,10 +64,5 @@ Route::resource('procurements', App\Http\Controllers\ProcurementController::clas
 
 //Laporan Cabang
 Route::get('inventory-report', [App\Http\Controllers\LaporanPersediaanController::class, 'index'])->name('reports.index')->middleware('auth');
-
-Route::get('students', [App\Http\Controllers\StudentController::class, 'index'])->name('students');
-Route::get('standards', [App\Http\Controllers\StudentController::class, 'getStandard'])->name('standards');
-Route::get('results', [App\Http\Controllers\StudentController::class, 'getResult'])->name('results');
-Route::get('students/records', [App\Http\Controllers\StudentController::class, 'records'])->name('students/records');
 
 Route::resource('electricities', App\Http\Controllers\ElectricityController::class)->middleware('auth');

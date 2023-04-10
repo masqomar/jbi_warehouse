@@ -296,7 +296,7 @@ return [
                             'permission' => 'view assetmaintenance'
                         ],
                         [
-                            'title' => 'Procurements',
+                            'title' => 'Pengadaan',
                             'route' => '/procurements',
                             'permission' => 'view procurement'
                         ]
@@ -332,23 +332,22 @@ return [
         [
             'header' => 'Menu Pusat',
             'permissions' => [
-                'view all-product',
-                'view role & permission'
+                'view transaction'
             ],
             'menus' => [
                 [
                     'title' => 'Laporan Persediaan',
                     'icon' => '<i class="bi bi-people-fill"></i>',
-                    'route' => '/all-products',
-                    'permission' => 'view all-product',
+                    'route' => '/inventory-report',
+                    'permission' => 'view transaction',
                     'permissions' => [],
                     'submenus' => []
                 ],
                 [
                     'title' => 'Laporan Inventaris',
                     'icon' => '<i class="bi bi-person-check-fill"></i>',
-                    'route' => '/errors',
-                    'permission' => 'view role & permission',
+                    'route' => '/asset-report',
+                    'permission' => 'view transaction',
                     'permissions' => [],
                     'submenus' => []
                 ]

@@ -48,6 +48,7 @@
                 @endforeach
             </select>
         </div>
+        <div><a href="{{ url('/users/create') }}" class="btn btn-info">Tambah PIC</a> </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">

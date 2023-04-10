@@ -64,5 +64,6 @@ Route::resource('procurements', App\Http\Controllers\ProcurementController::clas
 
 //Laporan Cabang
 Route::get('inventory-report', [App\Http\Controllers\LaporanPersediaanController::class, 'index'])->name('reports.index')->middleware('auth');
+Route::get('asset-report', [App\Http\Controllers\LaporanAssetController::class, 'index'])->name('asset-reports.index')->middleware('auth');
 
 Route::resource('electricities', App\Http\Controllers\ElectricityController::class)->middleware('auth');

@@ -21,7 +21,6 @@
                             <tr>
                                 <th>Product Name</th>
                                 <th>Quantity</th>
-                                <th class="text-right">Price</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,12 +30,6 @@
             </div>
             <form action="{{ route('transactions.store') }}" method="post">
                 @csrf
-                <div class="row mt-2">
-                    <div class="col">Total:</div>
-                    <div class="col text-right">
-                        <input type="number" value="" name="total" readonly class="form-control total">
-                    </div>
-                </div>
                 <div class="row mt-2">
                     <div class="col">Purpose:</div>
                     <div class="col text-right">
@@ -83,7 +76,6 @@
                     <img src="{{$product->getFirstMediaUrl('product_image', 'thumb')}}" / width="90px" height="90px" alt="product_image">
 
                     <h6 style="margin: 0;">{{ $product->name }}</h6>
-                    <span>@rupiah($product->price)</span>
                 </button>
                 @endif
                 @endforeach
@@ -108,10 +100,8 @@
                 url: "carts",
                 dataType: "json",
                 success: function(response) {
-                    let total = 0;
                     $('tbody').html("");
                     $.each(response.carts, function(key, product) {
-                        total += product.price * product.quantity
                         $('tbody').append(`
                             <tr>
                                 <td>${product.name}</td>
@@ -137,23 +127,14 @@
                                     <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
-                                <td class="text-right">
-                                Rp.${ product.quantity * product.price}
-                                </td>
                             </tr>
                             `)
                     });
-
-                    const test = $('.total').attr('value', `${total}`);
                 }
             })
         }
 
         getCarts()
-
-        $(document).on('change', '.received', function() {
-            const total = $('.total').val();
-        })
 
         $(document).on('change', '.qty', function() {
             const qty = $(this).val();

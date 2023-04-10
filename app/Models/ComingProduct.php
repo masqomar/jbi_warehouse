@@ -23,14 +23,14 @@ class ComingProduct extends Model
 	 *
 	 * @var string[]
 	 */
-	protected $fillable = ['code', 'date', 'product_id', 'price', 'qty', 'user_id', 'company_id', 'supplier_id'];
+	protected $fillable = ['code', 'date', 'product_id', 'price', 'qty', 'user_id', 'company_id', 'supplier_id', 'total_price'];
 
 	/**
 	 * The attributes that should be cast.
 	 *
 	 * @var array
 	 */
-	protected $casts = ['code' => 'string', 'date' => 'date:d/m/Y', 'price' => 'integer', 'qty' => 'integer', 'created_at' => 'datetime:d/m/Y H:i', 'updated_at' => 'datetime:d/m/Y H:i'];
+	protected $casts = ['code' => 'string', 'date' => 'date:d/m/Y', 'price' => 'integer', 'qty' => 'integer', 'total_price' => 'integer', 'created_at' => 'datetime:d/m/Y H:i', 'updated_at' => 'datetime:d/m/Y H:i'];
 
 	public function product()
 	{

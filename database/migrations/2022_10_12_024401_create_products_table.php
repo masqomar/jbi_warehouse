@@ -19,13 +19,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('code');
             $table->string('full_code');
             $table->integer('quantity');
-            $table->integer('first_stock');
             $table->integer('price');
             $table->integer('danger_level');
+            $table->string('product_image')->nullable();
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnUpdate();
             $table->foreignIdFor(Unit::class)->constrained()->cascadeOnUpdate();
             $table->foreignIdFor(Company::class)->constrained()->cascadeOnUpdate();

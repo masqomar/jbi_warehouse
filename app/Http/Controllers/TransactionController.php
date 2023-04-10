@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\FifoStock;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
@@ -45,7 +46,6 @@ class TransactionController extends Controller
             $transactionParams = [
                 'transaction_code' => 'P100' . mt_rand(1, 1000),
                 'created_by' => auth()->user()->name,
-                'total_price' => $params['total'],
                 'date' => Carbon::now(),
                 'purpose' => $params['purpose'],
                 'description' => $params['description'],
@@ -62,12 +62,38 @@ class TransactionController extends Controller
 
             if ($transaction && $carts) {
                 foreach ($carts as $cart) {
+                    $qty    = $cart->quantity;
+                    // Ambil Data Stok Barang yg terpilih dan diurutkan berdasarkan tgl ASC (FIFO)
+                    $ambilStock = FifoStock::where([['quantity', '>', 0], ['product_id', $cart->product_id]])->orderBy('date', 'ASC')->get();
+                    foreach ($ambilStock as $d) {
+                        $id  = $d->id;
+                        $stok  = $d->quantity;
+                        $price  = $d->price;
+                        if ($qty > 0) {
+                            // buat var $temp sbg. pengurang
+                            $temp = $qty;
+                            //proses pengurangan
+                            $qty = $qty - $stok;
+                            if ($qty > 0) {
+                                $stok_update = 0;
+                            } else {
+                                $stok_update = $stok - $temp;
+                            }
 
+                            FifoStock::where('product_id', $cart->product_id)->where('id', $id)
+                                ->update([
+                                    'quantity' => $stok_update,
+                                    'total_price' => $stok_update * $price
+                                ]);
+                        }
+                    }
                     $orderItemParams = [
                         'transaction_id' => $transaction->id,
                         'product_id' => $cart->product_id,
                         'qty' => $cart->quantity,
                         'product_name' => $cart->name,
+                        'price' => $price,
+                        'total_price' => $cart->quantity * $price
                     ];
 
                     $orderItem = TransactionDetail::create($orderItemParams);

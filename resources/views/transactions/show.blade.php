@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="card-footer text-right">
-            <h3>Total : @rupiah( $transaction->total_price )</h3>
+
             <button class="btn btn-success" onclick="notaKecil('{{ route('transactions.print_struck', $transaction->id) }}', 'print_struck')">Print Nota</button>
         </div>
     </div>

@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('coming_products', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-			$table->date('date');
-			$table->foreignId('product_id')->constrained('products')->cascadeOnUpdate()->cascadeOnDelete();
-			$table->integer('price');
-			$table->integer('qty');
-			$table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-			$table->foreignId('company_id')->constrained('companies')->cascadeOnUpdate()->cascadeOnDelete();
-			$table->foreignId('supplier_id')->nullable()->constrained('suppliers')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->date('date');
+            $table->foreignId('product_id')->constrained('products')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->integer('price');
+            $table->integer('qty');
+            $table->integer('total_price');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('company_id')->constrained('companies')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('supplier_id')->nullable()->constrained('suppliers')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Company;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('fifo_stocks', function (Blueprint $table) {
             $table->id();
-            $table->string('transaction_code');
-            $table->string('created_by');
+            $table->integer('quantity');
+            $table->integer('price');
             $table->date('date');
-            $table->text('purpose')->nullable();
-            $table->text('description')->nullable();
-            $table->string('pic');
-            $table->foreignIdFor(Company::class)->constrained();
-
+            $table->integer('total_price');
+            $table->foreignId('product_id')->constrained('products')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('fifo_stocks');
     }
 };

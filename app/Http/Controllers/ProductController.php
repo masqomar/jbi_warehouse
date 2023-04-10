@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Category;
+use App\Models\ComingProduct;
+use App\Models\FifoStock;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Image;
 
 class ProductController extends Controller
 {
@@ -35,11 +39,37 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        $product = Product::create($request->validated() + ['first_stock' => $request->quantity, 'company_id' => Auth::user()->company_id, 'user_id' => Auth::user()->id]);
+        DB::transaction(
+            function () use ($request) {
 
-        if ($request->hasFile('product_image') && $request->file('product_image')->isValid()) {
-            $product->addMediaFromRequest('product_image')->toMediaCollection('product_image');
-        }
+                $product = Product::create($request->validated() + ['first_stock' => $request->quantity, 'company_id' => Auth::user()->company_id, 'user_id' => Auth::user()->id]);
+
+                if ($request->hasFile('product_image') && $request->file('product_image')->isValid()) {
+                    $product->addMediaFromRequest('product_image')->toMediaCollection('product_image');
+                }
+
+                FifoStock::create([
+                    'quantity' => $request->quantity,
+                    'price'  => $request->price,
+                    'date' => now(),
+                    'product_id' => $product->id,
+                    'total_price' => $request->quantity * $request->price
+                ]);
+
+                ComingProduct::create([
+                    'code' => 'BM-' . date('Y') . '-' . rand(1000000, 9999999),
+                    'date' => now(),
+                    'product_id' => $product->id,
+                    'price' => $request->price,
+                    'qty' => $request->quantity,
+                    'team_id' => Auth::user()->team_id,
+                    'supplier_id' => 1,
+                    'total_price' => $request->quantity * $request->price,
+                    'user_id' => Auth::user()->id,
+                    'company_id' => Auth::user()->company_id,
+                ]);
+            }
+        );
 
         return redirect()->route('products.index')->with([
             'message' => 'successfully created !',
@@ -49,7 +79,10 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        $product->load('unit:id,name', 'category:id,code', 'company:id,name',);
+        $fifoStocks = FifoStock::where('product_id', $product->id)->get();
+
+        return view('products.show', compact('product', 'fifoStocks'));
     }
 
     public function edit(Product $product)

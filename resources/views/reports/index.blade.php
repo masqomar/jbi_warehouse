@@ -21,12 +21,6 @@
 
     <section class="section">
         <x-alert></x-alert>
-        <div class="d-flex justify-content-end">
-            <a href="{{ route('reports.cetaklaporan') }}" class="btn btn-primary mb-3">
-                <i class="fas fa-print"></i>
-                {{ __('Cetak Laporan') }}
-            </a>
-        </div>
 
         <div class="row">
             <div class="col-md-12">
@@ -38,8 +32,8 @@
                                     <tr>
                                         <th>{{ __('Nama Barang') }}</th>
                                         <th>{{ __('Satuan') }}</th>
+                                        <th>{{ __('Kategori') }}</th>
                                         <th>{{ __('Harga Beli') }}</th>
-                                        <th>{{ __('Saldo Awal') }}</th>
                                         <th>{{ __('Masuk') }}</th>
                                         <th>{{ __('Keluar') }}</th>
                                         <th>{{ __('Saldo Akhir') }}</th>
@@ -60,16 +54,39 @@
 @push('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.0/datatables.min.css" />
+<link href='https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css' rel='stylesheet' type='text/css'>
 @endpush
 
 @push('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.0/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
 <script>
     $('#data-table').DataTable({
         processing: true,
         serverSide: true,
         ajax: "{{ route('reports.index') }}",
+        dom: 'Blfrtip',
+        buttons: [{
+                extend: 'pdf',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8] // Column index which needs to export
+                }
+            },
+            {
+                extend: 'csv',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8] // Column index which needs to export
+                }
+            },
+            {
+                extend: 'excel',
+            }
+        ],
         columns: [{
                 data: 'name',
                 name: 'name',
@@ -82,18 +99,12 @@
                 name: 'unit.name'
             },
             {
-                data: 'price',
-                name: 'price',
-                render: function(data, type, full, meta) {
-                    return data ? data : '-';
-                }
+                data: 'category',
+                name: 'category.name'
             },
             {
-                data: 'first_stock',
-                name: 'first_stock',
-                render: function(data, type, full, meta) {
-                    return data ? data : '-';
-                }
+                data: 'harga_beli',
+                name: 'harga_beli',
             },
             {
                 data: 'masuk',
@@ -112,10 +123,11 @@
                 name: 'total',
             },
             {
-                data: 'barcet',
-                name: 'barcet',
+                data: 'biaya_barcet',
+                name: 'biaya_barcet',
             },
         ],
+
     });
 </script>
 @endpush

@@ -66,9 +66,7 @@
                                         <td class="text-center">{{ $product->quantity }} {{ $product->unit->name }}</td>
                                         <td class="text-center">{{ $product->category->name }}</td>
                                         <td class="text-center">{{ $product->user->name }}</td>
-                                        <td class="text-center">
-                                            <img src="{{$product->getFirstMediaUrl('product_image', 'thumb')}}" width="45px" height="45px" />
-                                        </td>
+
 
                                     </tr>
                                     @empty

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ComingProduct;
 use App\Http\Requests\{StoreComingProductRequest, UpdateComingProductRequest};
+use App\Models\FifoStock;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -77,14 +78,22 @@ class ComingProductController extends Controller
         DB::transaction(
             function () use ($request, $productId, $totalStock) {
                 ComingProduct::create([
-                    'code' => 'INV' . '-' . date('Ymd') . '-' . rand(1, 1000),
+                    'code' => 'BM-' . date('Y') . '-' . rand(1000000, 9999999),
                     'date' => Carbon::now(),
                     'product_id' => $productId,
                     'price' => $request->price,
                     'qty' => $request->qty,
                     'supplier_id' => $request->supplier_id,
+                    'total_price' => $request->qty * $request->price,
                     'user_id' => auth()->user()->id,
                     'company_id' => auth()->user()->company_id
+                ]);
+                FifoStock::create([
+                    'quantity' => $request->qty,
+                    'price'  => $request->price,
+                    'date' => $request->date,
+                    'product_id' => $productId,
+                    'total_price' => $request->qty * $request->price
                 ]);
 
                 Product::where('id', $productId)

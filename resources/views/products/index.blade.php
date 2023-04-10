@@ -22,7 +22,7 @@
     <section class="section">
         <x-alert></x-alert>
 
-        @can('create category')
+        @can('create product')
         <div class="d-flex justify-content-end">
             <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">
                 <i class="fas fa-plus"></i>
@@ -48,6 +48,7 @@
                                         <th class="text-center">{{ __('Category') }}</th>
                                         <th class="text-center">{{ __('User') }}</th>
                                         <th class="text-center">{{ __('Image') }}</th>
+                                        <th class="text-center">{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,11 +70,17 @@
                                         <td class="text-center">
                                             <img src="{{$product->getFirstMediaUrl('product_image', 'thumb')}}" width="45px" height="45px" />
                                         </td>
-
+                                        @can('view product')
+                                        <td class="text-center">
+                                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-success btn-sm">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </td>
+                                        @endcan
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="9" class="text-center">{{ __('Data Empty') }}</td>
+                                        <td colspan="10" class="text-center">{{ __('Data Empty') }}</td>
                                     </tr>
                                     @endforelse
                                 </tbody>

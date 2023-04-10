@@ -21,7 +21,8 @@ return new class extends Migration
             $table->foreignIdFor(Transaction::class)->constrained();
             $table->integer('qty');
             $table->string('product_name');
-
+            $table->integer('price');
+            $table->integer('total_price');
             $table->timestamps();
         });
     }
